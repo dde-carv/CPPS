@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 15:19:57 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/24 09:30:05 by dde-carv         ###   ########.fr       */
+/*   Created: 2025/06/24 09:23:27 by dde-carv          #+#    #+#             */
+/*   Updated: 2025/06/24 14:14:12 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "PhoneBook.hpp"
 
-int	main(int ac,char *av[]) {
-	int i = 1;
-	int j;
+void	PhoneBook::add_contact() {
+	std::cout << "/* ************************************************************************** *\\" << std::endl;
+	std::cout << "Fill the form bellow to add a contact:" << std::endl;
 
-	while (ac > i){
-		j = -1;
-		while (av[i][++j])
-			av[i][j] = std::toupper(av[i][j]);
-		std::cout << av[i];
-		i++;
-	}
-	if (i == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
+	for (int i = 6; i >= 0; i--)
+		contact[i + 1] = contact[i];
+
+	contact[0].fill_form();
+
 }

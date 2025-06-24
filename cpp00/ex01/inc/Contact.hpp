@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 15:19:57 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/24 09:30:05 by dde-carv         ###   ########.fr       */
+/*   Created: 2025/06/24 09:23:36 by dde-carv          #+#    #+#             */
+/*   Updated: 2025/06/24 14:21:36 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
 #include <iostream>
 
-int	main(int ac,char *av[]) {
-	int i = 1;
-	int j;
+class Contact{
 
-	while (ac > i){
-		j = -1;
-		while (av[i][++j])
-			av[i][j] = std::toupper(av[i][j]);
-		std::cout << av[i];
-		i++;
-	}
-	if (i == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	std::cout << std::endl;
-}
+	private:
+		//* attributes
+		std::string first_name;
+		std::string last_name;
+		std::string nickname;
+		std::string darkest_secret;
+		std::string phone_number;
+
+	public:
+		//* methods
+		std::string	get_input(std::string message);
+		void		validate_number();
+		void		fill_form();
+		int			is_empty();
+
+};
+
+# endif

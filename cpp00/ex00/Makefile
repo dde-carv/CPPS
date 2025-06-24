@@ -7,7 +7,7 @@ FILES	=	megaphone.cpp
 
 SRCS	=	$(FILES)
 
-OBJ		=	$(SRCS:.c=.o)
+OBJ		=	$(SRCS:.cpp=.o)
 
 all:	$(NAME)
 
