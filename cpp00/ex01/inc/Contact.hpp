@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:36 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/25 15:54:18 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:15:59 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class Contact{
 
 	public:
 		//* methods
-		std::string	format_field(std::string prompt, int is_alpha);
-		std::string	get_input(std::string message, int is_alpha);
+		std::string	format_field(std::string prompt, int flag);
+		std::string	get_input(std::string message, int flag);
 		void		validate_number();
 		void		display_line();
 		void		display_info();

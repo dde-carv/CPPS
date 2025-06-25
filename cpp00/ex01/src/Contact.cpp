@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/25 16:39:04 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:15:59 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,23 @@ int	Contact::is_empty() {
 	return 0;
 }
 
-std::string	Contact::format_field(std::string prompt, int is_alpha) {
+std::string	Contact::format_field(std::string prompt, int flag) {
 	int i = -1;
 
 	while (prompt[++i]) {
-		if ((isspace(prompt[i]) || prompt[i] == 27 || prompt[i] == 127) && is_alpha != 4)
+		if ((isspace(prompt[i]) || prompt[i] == 27 || prompt[i] == 127) && flag != 4)
 			return "";
-		if (is_alpha == 1 && !std::isalpha(prompt[i]))
+		if (flag == 1 && !std::isalpha(prompt[i]))
 			return "";
-		if (is_alpha == 2 && !std::isalnum(prompt[i]))
+		if (flag == 2 && !std::isalnum(prompt[i]))
 			return "";
-		if (is_alpha == 3 && prompt[i] <= 32)
+		if (flag == 3 && prompt[i] <= 32)
 			return "";
 	}
 	return prompt;
 }
 
-std::string	Contact::get_input(std::string message, int is_alpha) {
+std::string	Contact::get_input(std::string message, int flag) {
 	std::string	prompt;
 
 	while (std::cin) {
@@ -74,7 +74,7 @@ std::string	Contact::get_input(std::string message, int is_alpha) {
 		std::getline(std::cin, prompt);
 		if (!std::cin)
 			break ;
-		prompt = format_field(prompt, is_alpha);
+		prompt = format_field(prompt, flag);
 		if (!prompt.empty())
 			break ;
 		else
