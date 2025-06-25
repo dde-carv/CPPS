@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:25 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/25 17:02:44 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:08:39 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	main() {
 	std::cout << "\033[35m" << std::endl << "Thank you for using my crappy awesome phonebook!" << "\033[0m" << std::endl << std::endl;
 	system("sleep 2");
 	system("timeout 5 curl parrot.live");
+	system("clear");
 	return 0;
 }
