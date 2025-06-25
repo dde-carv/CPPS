@@ -6,14 +6,17 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:36 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/24 14:21:36 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:54:18 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <iostream>
+# include <iostream>
+# include <iomanip>
+# include <string.h>
+# include <stdlib.h>
 
 class Contact{
 
@@ -27,8 +30,11 @@ class Contact{
 
 	public:
 		//* methods
-		std::string	get_input(std::string message);
+		std::string	format_field(std::string prompt, int is_alpha);
+		std::string	get_input(std::string message, int is_alpha);
 		void		validate_number();
+		void		display_line();
+		void		display_info();
 		void		fill_form();
 		int			is_empty();
 

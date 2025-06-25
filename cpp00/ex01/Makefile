@@ -7,7 +7,9 @@ OBJ_DIR		=	obj/
 CC			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-PHONE		=	$(SRC_DIR)phonebook.cpp
+PHONE		=	$(SRC_DIR)PhoneBook.cpp \
+				$(SRC_DIR)Contact.cpp \
+				$(SRC_DIR)main.cpp
 
 SRCS		=	$(PHONE)
 
@@ -19,12 +21,12 @@ $(NAME):		$(OBJS)
 				@$(CC) $(OBJS) -o $(NAME)
 				@echo "\033[1;32m$(NAME) created.\033[0m"
 
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 				@mkdir -p $(@D)
-				@$(CC) -I$(INC) -cpp $< -o $@
+				@$(CC) -I$(INC) -c $< -o $@
 
 clean:
-			$(RM) -r $(OBJ_DIR)
+			@$(RM) -r $(OBJ_DIR)
 			@echo "\033[1;31mObject files deleted.\033[0m"
 
 fclean:		clean
