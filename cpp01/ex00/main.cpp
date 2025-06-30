@@ -12,6 +12,7 @@ int	main()
 
 	std::cout << std::endl << "Creating a Zombie outside the scope." << std::endl;
 	randomChump("Ronaldo");
+	std::cout << std::endl;
 
 	delete other_half;
 }
