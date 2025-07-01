@@ -7,7 +7,7 @@ CC			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
 BARAINZ		=	Zombie.cpp \
-				zombieHord.cpp \
+				zombieHorde.cpp \
 				main.cpp
 
 SRCS		=	$(BARAINZ)
