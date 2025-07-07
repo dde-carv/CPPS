@@ -1,4 +1,4 @@
-NAME		=	unnecessary_violence
+NAME		=	sed_is_for_losers
 
 INC			=	inc/
 SRC_DIR		=	src/
@@ -7,10 +7,7 @@ OBJ_DIR		=	obj/
 CC			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-PHONE		=	$(SRC_DIR)HumanA.cpp \
-				$(SRC_DIR)HumanB.cpp \
-				$(SRC_DIR)Weapon.cpp \
-				$(SRC_DIR)main.cpp
+PHONE		=	$(SRC_DIR)main.cpp
 
 SRCS		=	$(PHONE)
 
