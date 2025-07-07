@@ -8,7 +8,7 @@ HumanA::HumanA(std::string name, Weapon &weapon) : _weapon(weapon)
 
 HumanA::~HumanA()
 {
-	std::cout << "HumanA destructor called." << std::endl;
+	std::cout << "HumanA default destructor called." << std::endl;
 }
 
 void	HumanA::setWeapon(Weapon &weapon)
