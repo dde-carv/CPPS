@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:25 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/25 17:08:39 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:42:48 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main() {
 		else if (option == "EXIT")
 			break ;
 		else {
-			std::cerr << "\033[31m" << "Invalid input, try again!!" << "\033[0m" << std::endl;
+			std::cout << "\033[31m" << "Invalid input, try again!!" << "\033[0m" << std::endl;
 			system("sleep 1");
 			system("clear");
 		}

@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:27 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/25 14:46:37 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:42:48 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	PhoneBook::display_contacts() {
 	system("sleep 1");
 	system("clear");
 	if (contact[0].is_empty()) {
-		std::cerr << "\033[31m" << "There is no contact in your crappy awesome phonebook!" << "\033[0m" << std::endl;
+		std::cout << "\033[31m" << "There is no contact in your crappy awesome phonebook!" << "\033[0m" << std::endl;
 		system("sleep 2");
 		system("clear");
 		return ;
@@ -66,7 +66,7 @@ void	PhoneBook::display_contacts() {
 			break ;
 		}
 		else
-			std::cerr << "\033[31m" << "Invalid index, try again: " << "\033[0m";
+			std::cout << "\033[31m" << "Invalid index, try again: " << "\033[0m";
 	}
 	if (std::cin) {
 		std::cout << "\033[35m" << "\\* *************************************** */" << "\033[0m" << std::endl;

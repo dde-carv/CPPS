@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 09:23:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/06/25 17:15:59 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:42:48 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	Contact::validate_number() {
 			phone_number = "";
 	}
 	if (phone_number.empty())
-		std::cerr << "\033[31m" << "Invalid phone number, try again!" << "\033[0m" << std::endl;
+		std::cout << "\033[31m" << "Invalid phone number, try again!" << "\033[0m" << std::endl;
 }
 
 int	Contact::is_empty() {
@@ -78,7 +78,7 @@ std::string	Contact::get_input(std::string message, int flag) {
 		if (!prompt.empty())
 			break ;
 		else
-			std::cerr << "\033[31m" << "Invalid input, try againg!" << "\033[0m" << std::endl;
+			std::cout << "\033[31m" << "Invalid input, try againg!" << "\033[0m" << std::endl;
 	}
 	return prompt;
 }

@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string.h>
 
 class Replacer
 {
@@ -11,5 +12,8 @@ class Replacer
 	public:
 		Replacer();
 		~Replacer();
+		void	file_closer();
+		int		set_new_file(std::string fname);
+		int		replace(std::string s1, std::string s2);
 };
 
