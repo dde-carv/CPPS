@@ -7,7 +7,8 @@ OBJ_DIR		=	obj/
 CC			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-PHONE		=	$(SRC_DIR)main.cpp
+PHONE		=	$(SRC_DIR)main.cpp \
+				$(SRC_DIR)Replacer.cpp
 
 SRCS		=	$(PHONE)
 

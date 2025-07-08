@@ -26,7 +26,7 @@ int	Replacer::set_new_file(std::string fname)
 	}
 	std::string new_file_name = ".replace";
 	new_file_name.insert(0, fname);
-	_newfile.open(fname.c_str(), std::ios::out);
+	_newfile.open(new_file_name.c_str(), std::ios::out);
 	if (!_newfile.good())
 	{
 		_oldfile.close();
@@ -45,3 +45,27 @@ void	Replacer::file_closer()
 		_newfile.close();
 }
 
+int		Replacer::replace(std::string s1, std::string s2)
+{
+	size_t		pos;
+	std::string	buffer;
+	int			s1_l = s1.length();
+	int			s2_l = s2.length();
+
+	while (getline(_oldfile, buffer))
+	{
+		pos = buffer.find(s1);
+		while (pos != std::string::npos && s1_l)
+		{
+			buffer.erase(pos, s1_l);
+			buffer.insert(pos, s2);
+			_newfile << buffer.substr(0, pos + s2_l);
+			buffer.erase(0, pos + s2_l);
+			pos = buffer.find(s1);
+		}
+		_newfile << buffer;
+		if(!_oldfile.eof())
+			_newfile << std::endl;
+	}
+	return 1;
+}

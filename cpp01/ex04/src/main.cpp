@@ -37,4 +37,9 @@ static Replacer	*parser(int ac, char* av[])
 int	main(int ac, char* av[])
 {
 	Replacer *replaced = parser(ac, av);
+	if (!replaced)
+		return 1;
+	replaced->replace(av[2], av[3]);
+	delete replaced;
+	return 0;
 }
