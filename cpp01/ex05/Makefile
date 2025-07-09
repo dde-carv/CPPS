@@ -1,4 +1,4 @@
-NAME		=	sed_is_for_losers
+NAME		=	harl_2
 
 INC			=	inc/
 SRC_DIR		=	src/
@@ -8,7 +8,8 @@ CC			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
 PHONE		=	$(SRC_DIR)main.cpp \
-				
+				$(SRC_DIR)Harl.cpp
+
 
 SRCS		=	$(PHONE)
 
