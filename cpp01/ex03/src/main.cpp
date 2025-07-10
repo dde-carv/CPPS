@@ -50,5 +50,5 @@ int main()
 	test1();
 	std::cout << std::endl;
 	test2();
-	return (1);
+	return (0);
 }

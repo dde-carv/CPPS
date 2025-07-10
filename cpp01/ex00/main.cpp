@@ -15,4 +15,5 @@ int	main()
 	std::cout << std::endl;
 
 	delete other_half;
+	return 0;
 }
