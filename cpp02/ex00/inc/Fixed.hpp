@@ -5,8 +5,14 @@
 class Fixed
 {
 	private:
-		/* data */
+		int					_fixedPointVal;
+		static const int	_fractionalBits;
+
 	public:
-		Fixed(/* args */);
+		Fixed();
+		Fixed(const Fixed &copy);
+		Fixed	&operator=(const Fixed &copy);
 		~Fixed();
+		int		getRawBits()const;
+		void	setRawBits(int const raw);
 };
