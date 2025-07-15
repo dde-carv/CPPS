@@ -1,4 +1,4 @@
-NAME		=	harl_2
+NAME		=	fixed_point
 
 INC			=	inc/
 SRC_DIR		=	src/
