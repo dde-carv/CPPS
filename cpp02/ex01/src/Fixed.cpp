@@ -39,13 +39,72 @@ Fixed	&Fixed::operator=(const Fixed &copy)
 	return *this;
 }
 
+Fixed	&Fixed::operator++()
+{
+}
+
+Fixed	Fixed::operator++(int)
+{
+}
+
+Fixed	&Fixed::operator--()
+{
+}
+
+Fixed	Fixed::operator--(int)
+{
+}
+
+
+float	Fixed::operator+(const Fixed &copy)const
+{
+}
+
+float	Fixed::operator-(const Fixed &copy)const
+{
+}
+
+float	Fixed::operator*(const Fixed &copy)const
+{
+}
+
+float	Fixed::operator/(const Fixed &copy)const
+{
+}
+
+
+bool	Fixed::operator>(const Fixed &copy)const
+{
+}
+
+bool	Fixed::operator<(const Fixed &copy)const
+{
+}
+
+bool	Fixed::operator>=(const Fixed &copy)const
+{
+}
+
+bool	Fixed::operator<=(const Fixed &copy)const
+{
+}
+
+bool	Fixed::operator==(const Fixed &copy)const
+{
+}
+
+bool	Fixed::operator!=(const Fixed &copy)const
+{
+}
+
+
 std::ostream	&operator<<(std::ostream &stream, const Fixed &numb)
 {
 	stream << numb.toFloat();
 	return stream;
 }
 
-/************ Getters ************/
+/************ Getters and Setters ************/
 
 int	Fixed::getRawBits()const
 {
@@ -53,15 +112,13 @@ int	Fixed::getRawBits()const
 	return _fixedPointVal;
 }
 
-/************ Setters ************/
-
 void	Fixed::setRawBits(int const raw)
 {
 	std::cout << GREEN << "setRawBits function called" << RST << std::endl;
 	_fixedPointVal = raw;
 }
 
-/************ Others ************/
+/************ Conversions ************/
 
 float	Fixed::toFloat(void)const
 {
@@ -71,4 +128,22 @@ float	Fixed::toFloat(void)const
 int	Fixed::toInt(void)const
 {
 	return _fixedPointVal >> _fractionalBits;
+}
+
+/************ Other ************/
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
+{
+}
+
+Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
+{
+}
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+}
+
+Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
+{
 }

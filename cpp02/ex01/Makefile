@@ -1,4 +1,4 @@
-NAME		=	fixed_point_pt2
+NAME		=	now_we_are_talking
 
 INC			=	inc/
 SRC_DIR		=	src/
