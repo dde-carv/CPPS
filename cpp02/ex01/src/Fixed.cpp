@@ -63,7 +63,12 @@ void	Fixed::setRawBits(int const raw)
 
 /************ Others ************/
 
-float	toFloat(void)const
+float	Fixed::toFloat(void)const
 {
-	
+	return (float)_fixedPointVal / (1 << _fractionalBits);
+}
+
+int	Fixed::toInt(void)const
+{
+	return _fixedPointVal >> _fractionalBits;
 }

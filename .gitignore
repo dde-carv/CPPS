@@ -6,6 +6,7 @@ objects/
 *.swp
 .dist/
 .DS_Store
+
 megaphone
 phonebook
 brainzzz
@@ -15,3 +16,4 @@ unnecessary_violence
 sed_is_for_losers
 harl_2
 fixed_point
+fixed_point_pt2
