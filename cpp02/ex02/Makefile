@@ -7,11 +7,11 @@ OBJ_DIR		=	obj/
 CC			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-PHONE		=	$(SRC_DIR)main.cpp \
+OPERATORS	=	$(SRC_DIR)main.cpp \
 				$(SRC_DIR)Fixed.cpp
 
 
-SRCS		=	$(PHONE)
+SRCS		=	$(OPERATORS)
 
 OBJS		=	$(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 
