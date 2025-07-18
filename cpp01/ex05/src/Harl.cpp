@@ -15,7 +15,7 @@ Harl::Harl()
 
 Harl::~Harl()
 {
-	std::cout << std::endl << "Default desconstructor called." << std::endl;
+	std::cout << std::endl << "Default destructor called." << std::endl;
 }
 
 void	Harl::complain(std::string level)

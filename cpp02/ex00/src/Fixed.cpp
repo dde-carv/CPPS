@@ -24,7 +24,7 @@ Fixed	&Fixed::operator=(const Fixed &copy)
 
 Fixed::~Fixed()
 {
-	std::cout << RED << "Default desconstructor called" << RST << std::endl;
+	std::cout << RED << "Default destructor called" << RST << std::endl;
 }
 
 int	Fixed::getRawBits()const
