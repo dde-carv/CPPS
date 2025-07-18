@@ -67,28 +67,24 @@ Fixed	Fixed::operator--(int)
 }
 
 
-float	Fixed::operator+(const Fixed &copy)const
+Fixed	Fixed::operator+(const Fixed &copy)const
 {
-	return ((float)(this->getRawBits() + copy.getRawBits()) \
-	/ (1 << this->_fractionalBits));
+	return Fixed(this->toFloat() + copy.toFloat());
 }
 
-float	Fixed::operator-(const Fixed &copy)const
+Fixed	Fixed::operator-(const Fixed &copy)const
 {
-	return ((float)(this->getRawBits() - copy.getRawBits()) \
-	/ (1 << this->_fractionalBits));
+	return Fixed(this->toFloat() - copy.toFloat());
 }
 
-float	Fixed::operator*(const Fixed &copy)const
+Fixed	Fixed::operator*(const Fixed &copy)const
 {
-	return ((float)(this->getRawBits() * copy.getRawBits()) \
-	/ (1 << this->_fractionalBits * 2));
+	return Fixed(this->toFloat() * copy.toFloat());
 }
 
-float	Fixed::operator/(const Fixed &copy)const
+Fixed	Fixed::operator/(const Fixed &copy)const
 {
-	return ((float)((float)(this->getRawBits() << this->_fractionalBits) / copy.getRawBits()) \
-	/ (1 << this->_fractionalBits));
+	return Fixed(this->toFloat() / copy.toFloat());
 }
 
 

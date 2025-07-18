@@ -27,10 +27,10 @@ class Fixed
 		Fixed			&operator--();
 		Fixed			operator--(int);
 
-		float			operator+(const Fixed &copy)const;
-		float			operator-(const Fixed &copy)const;
-		float			operator*(const Fixed &copy)const;
-		float			operator/(const Fixed &copy)const;
+		Fixed			operator+(const Fixed &copy)const;
+		Fixed			operator-(const Fixed &copy)const;
+		Fixed			operator*(const Fixed &copy)const;
+		Fixed			operator/(const Fixed &copy)const;
 
 		bool			operator>(const Fixed &copy)const;
 		bool			operator<(const Fixed &copy)const;
