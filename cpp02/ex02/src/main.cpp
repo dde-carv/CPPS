@@ -71,13 +71,6 @@ int	main()
 	std::cout << Fixed::min(a1, a2) << std::endl;
 	std::cout << Fixed::min(b1, b2) << std::endl;
 
-	Fixed &y = Fixed::max(b2, a1);
-	Fixed &z = Fixed::min(b2, a1);
-	y.setRawBits(0);
-	z.setRawBits(0);
-	std::cout << a1 << std::endl;
-	std::cout << b2 << std::endl;
-
 	std::cout << std::endl << "==================== TEST 5 ====================" << std::endl << std::endl;
 
 	Fixed	y1(1);
