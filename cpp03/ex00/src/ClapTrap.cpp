@@ -94,20 +94,20 @@ void	ClapTrap::attack(const std::string& target)
 {
 	if (!_hitPoints)
 	{
-		std::cout << BLUE << _name << " is dead and can't attack " << target << "." << RST << std::endl;
+		std::cout << BLUE << "ClapTrap " << _name << " is dead and can't attack " << target << "." << RST << std::endl;
 		return ;
 	}
 	if (!_energyPoints)
 	{
-		std::cout << BLUE << _name << " has no energy to attack " << target << "." << RST << std::endl;
+		std::cout << BLUE << "ClapTrap " << _name << " has no energy to attack " << target << "." << RST << std::endl;
 		return ;
 	}
 	if (!_attackDamage)
 	{
-		std::cout << BLUE << _name << " is too weak to attack " << target << "." << RST << std::endl;
+		std::cout << BLUE << "ClapTrap " << _name << " is too weak to attack " << target << "." << RST << std::endl;
 		return ;
 	}
-	std::cout << BLUE << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << RST <<std::endl;
+	std::cout << BLUE << "ClapTrap " << _name << " attacks " << target << ", causing " << _attackDamage << " points of damage!" << RST <<std::endl;
 	_energyPoints--;
 }
 
@@ -115,28 +115,28 @@ void	ClapTrap::takeDamage(unsigned int amount)
 {
 	if (!_hitPoints)
 	{
-		std::cout << CYAN << _name << " is already dead, can't attack this one!!" << RST << std::endl;
+		std::cout << CYAN << "ClapTrap " << _name << " is already dead, can't attack this one!!" << RST << std::endl;
 		return ;
 	}
 	if ((int)(_hitPoints - amount) < 0)
 		amount = _hitPoints;
 	_hitPoints -= amount;
-	std::cout << CYAN << _name << " lost " << amount << " hit points while getting attacked!" << RST << std::endl;
+	std::cout << CYAN << "ClapTrap " << _name << " lost " << amount << " hit points while getting attacked!" << RST << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (!_hitPoints)
 	{
-		std::cout << PURPLE << _name << " is dead and cannot be repaired!" << RST << std::endl;
+		std::cout << PURPLE << "ClapTrap " << _name << " is dead and cannot be repaired!" << RST << std::endl;
 		return ;
 	}
 	if (!_energyPoints)
 	{
-		std::cout << PURPLE << _name << " doesn't have energy points to be repaired!" << RST << std::endl;
+		std::cout << PURPLE << "ClapTrap " << _name << " doesn't have energy points to be repaired!" << RST << std::endl;
 		return ;
 	}
 	_hitPoints += amount;
 	_energyPoints--;
-	std::cout << PURPLE << _name << " has repaired and gained " << amount << " hit points back!" << RST << std::endl;
+	std::cout << PURPLE << "ClapTrap " << _name << " has repaired and gained " << amount << " hit points back!" << RST << std::endl;
 }

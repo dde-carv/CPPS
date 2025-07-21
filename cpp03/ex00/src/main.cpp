@@ -32,7 +32,7 @@ int main()
 	std::cout << "\n--- Police Report ---\n\n";
 	std::cout << "  Ramiro:\n      HP: " << Ramiro.getHitPoints() << "\n      EP: " \
 	<< Ramiro.getEnergyPoints() << "\n      AD: " << Ramiro.getAttackDamage();
-	std::cout << "\n\n  Someone:\n      HP: " << Someone.getHitPoints() << "\n      EP: " \
+	std::cout << "\n\n " << Someone.getName() << ":\n      HP: " << Someone.getHitPoints() << "\n      EP: " \
 	<< Someone.getEnergyPoints() << "\n      AD: " << Someone.getAttackDamage();
 	std::cout << "\n\n---------------------\n";
 }
