@@ -12,7 +12,6 @@ int main()
 	Bartolomeu.beRepaired(1);
 	std::cout << "\n	Hit Points: " << Bartolomeu.getHitPoints();
 	std::cout << "\n	Energy Points: " << Bartolomeu.getEnergyPoints() << "\n\n";
-	//Bartolomeu.guardGate();
 
 	ScavTrap	Rogerio("Rogerio");
 	std::cout << "----- " << Rogerio.getName() << " -----\n";
@@ -27,8 +26,7 @@ int main()
 	std::cout << "\n	Hit Points: " << Rogerio.getHitPoints();
 	std::cout << "\n	Energy Points: " << Rogerio.getEnergyPoints() << "\n\n";
 
-	// ScavTrap	Copycat;
-	// Copycat = Rogerio;
+
 	ScavTrap Copycat(Rogerio);
 
 	std::cout << "----- " << Copycat.getName() << " (copycat) -----\n";
@@ -44,11 +42,5 @@ int main()
 	std::cout << "\n	Energy Points: " << Copycat.getEnergyPoints() << "\n\n";
 	Copycat.setName("Rogerio copycat");
 
-	//ScavTrap a(Bartolomeu);
-	//ScavTrap b(Rogerio);
-	//ClapTrap c(Bartolomeu);
-	//ClapTrap d(Rogerio);
-	//Bartolomeu = Copycat;
-	//Copycat = Bartolomeu;
 	return (0);
 }

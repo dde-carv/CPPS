@@ -16,7 +16,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name), _guardGate(false)
 	std::cout << GREEN << "ScavTrap (" << _name << ") costum constructor called" << RST << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &object)
+ScavTrap::ScavTrap(const ScavTrap &object) : ClapTrap(object)
 {
 	*this = object;
 	std::cout << GREEN << "ScavTrap (" << _name << ") copy constructor called" << RST << std::endl;
@@ -42,9 +42,9 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &copy)
 		if(this->_guardGate != copy._guardGate)
 			_guardGate = copy._guardGate;
 	}
-	return *this;
-
 	std::cout << YELLOW << "ScavTrap (" << _name << ") copy assignment operator called" << RST << std::endl;
+
+	return *this;
 }
 
 bool	ScavTrap::getGardGate()
