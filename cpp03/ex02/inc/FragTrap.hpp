@@ -4,10 +4,13 @@
 
 class FragTrap : public ClapTrap
 {
-	private:
-		/* data */
-
 	public:
-		FragTrap(/* args */);
+		FragTrap();
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &object);
 		~FragTrap();
+
+		FragTrap		&operator=(const FragTrap &copy);
+
+		void			highFivesGuys(void);
 };
