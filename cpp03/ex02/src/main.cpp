@@ -4,7 +4,7 @@
 
 int main()
 {
-    FragTrap	Joaozinho("Joaozinho");
+	FragTrap	Joaozinho("Joaozinho");
 	std::cout << "----- " << Joaozinho.getName() << " -----\n\n";
 	std::cout << "	Attack: ";
 	Joaozinho.attack("Monitor");

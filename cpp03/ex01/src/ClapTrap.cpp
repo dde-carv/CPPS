@@ -82,9 +82,9 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
 		if(this->_attackDamage != copy._attackDamage)
 			_attackDamage = copy._attackDamage;
 	}
-	return *this;
-
 	std::cout << YELLOW << "ClapTrap (" << _name << ") copy assignment operator called" << RST << std::endl;
+
+	return *this;
 }
 
 /************ Other ************/
