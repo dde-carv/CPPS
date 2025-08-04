@@ -33,19 +33,13 @@ ScavTrap::~ScavTrap()
 
 ScavTrap	&ScavTrap::operator=(const ScavTrap &copy)
 {
-	if(this != &copy)
+	if(this == &copy)
 	{
-		if(this->_name != copy._name)
-			_name = copy._name;
-		if(this->_hitPoints != copy._hitPoints)
-			_hitPoints = copy._hitPoints;
-		if(this->_energyPoints != copy._energyPoints)
-			_energyPoints = copy._energyPoints;
-		if(this->_attackDamage != copy._attackDamage)
-			_attackDamage = copy._attackDamage;
 		if(this->_guardGate != copy._guardGate)
 			_guardGate = copy._guardGate;
 	}
+	else
+		_guardGate = copy._guardGate;
 
 	std::cout << YELLOW << "ScavTrap (" << _name << ") copy assignment operator called" << RST << std::endl;
 

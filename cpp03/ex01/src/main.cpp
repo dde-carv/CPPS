@@ -27,7 +27,7 @@ int main()
 	std::cout << "\n	Energy Points: " << Rogerio.getEnergyPoints() << "\n\n";
 
 
-	ScavTrap Copycat(Rogerio);
+	ScavTrap	Copycat(Rogerio);
 
 	std::cout << "----- " << Copycat.getName() << " (copycat) -----\n";
 	std::cout << "	Attack: ";

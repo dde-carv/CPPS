@@ -72,7 +72,7 @@ void	ClapTrap::setAttackDamage(unsigned int ad)
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
 {
-	if(this != &copy)
+	if(this == &copy)
 	{
 		if(this->_name != copy._name)
 			_name = copy._name;
@@ -82,6 +82,13 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
 			_energyPoints = copy._energyPoints;
 		if(this->_attackDamage != copy._attackDamage)
 			_attackDamage = copy._attackDamage;
+	}
+	else
+	{
+		_name = copy._name;
+		_hitPoints = copy._hitPoints;
+		_energyPoints = copy._energyPoints;
+		_attackDamage = copy._attackDamage;
 	}
 
 	std::cout << YELLOW << "ClapTrap (" << _name << ") copy assignment operator called" << RST << std::endl;

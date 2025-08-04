@@ -2,7 +2,7 @@
 
 int main()
 {
-	ClapTrap   	Ramiro("Ramiro");
+	ClapTrap	Ramiro("Ramiro");
 	Ramiro.attack("Wall");
 	std::cout << "\nPoor Ramiro, he is mad but has no strength to punch the Wall... Lets juice him up!\n";
 	Ramiro.setAttackDamage(4);
@@ -30,7 +30,7 @@ int main()
 	Someone.beRepaired(42);
 	std::cout << "\nUnfortunately " << Someone.getName() << " has no life left in his heart to fight back...\n";
 	std::cout << "\n--- Police Report ---\n\n";
-	std::cout << "  Ramiro:\n      HP: " << Ramiro.getHitPoints() << "\n      EP: " \
+	std::cout << " Ramiro:\n      HP: " << Ramiro.getHitPoints() << "\n      EP: " \
 	<< Ramiro.getEnergyPoints() << "\n      AD: " << Ramiro.getAttackDamage();
 	std::cout << "\n\n " << Someone.getName() << ":\n      HP: " << Someone.getHitPoints() << "\n      EP: " \
 	<< Someone.getEnergyPoints() << "\n      AD: " << Someone.getAttackDamage();
