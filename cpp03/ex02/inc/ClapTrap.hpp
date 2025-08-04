@@ -21,22 +21,32 @@ class ClapTrap
 		unsigned int	_attackDamage;
 
 	public:
+/************ Constructors and Destructor ************/
+
 		ClapTrap();
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap &object);
 		~ClapTrap();
 
+/************ Operator ************/
+
 		ClapTrap		&operator=(const ClapTrap &copy);
+
+/************ Getters ************/
 
 		std::string		getName();
 		unsigned int	getHitPoints();
 		unsigned int	getEnergyPoints();
 		unsigned int	getAttackDamage();
 
+/************ Setters ************/
+
 		void			setName(std::string name);
 		void			setHitPoints(unsigned int hp);
 		void			setEnergyPoints(unsigned int ep);
 		void			setAttackDamage(unsigned int ad);
+
+/************ Member Functions ************/
 
 		void			attack(const std::string& target);
 		void			takeDamage(unsigned int amount);

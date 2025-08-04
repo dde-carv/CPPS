@@ -15,6 +15,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name) , _hitPoints(10) , _energyPoi
 ClapTrap::ClapTrap(const ClapTrap &object)
 {
 	*this = object;
+
 	std::cout << GREEN << "ClapTrap (" << _name << ") copy constructor called" << RST << std::endl;
 }
 
@@ -25,49 +26,49 @@ ClapTrap::~ClapTrap()
 
 /************ Getters ************/
 
-	std::string	ClapTrap::getName()
-	{
-		return _name;
-	}
+std::string	ClapTrap::getName()
+{
+	return _name;
+}
 
-	unsigned int	ClapTrap::getHitPoints()
-	{
-		return _hitPoints;
-	}
+unsigned int	ClapTrap::getHitPoints()
+{
+	return _hitPoints;
+}
 
-	unsigned int	ClapTrap::getEnergyPoints()
-	{
-		return _energyPoints;
-	}
+unsigned int	ClapTrap::getEnergyPoints()
+{
+	return _energyPoints;
+}
 
-	unsigned int	ClapTrap::getAttackDamage()
-	{
-		return _attackDamage;
-	}
+unsigned int	ClapTrap::getAttackDamage()
+{
+	return _attackDamage;
+}
 
 /************ Setters ************/
 
-	void	ClapTrap::setName(std::string name)
-	{
-		_name = name;
-	}
+void	ClapTrap::setName(std::string name)
+{
+	_name = name;
+}
 
-	void	ClapTrap::setHitPoints(unsigned int hp)
-	{
-		_hitPoints = hp;
-	}
+void	ClapTrap::setHitPoints(unsigned int hp)
+{
+	_hitPoints = hp;
+}
 
-	void	ClapTrap::setEnergyPoints(unsigned int ep)
-	{
-		_energyPoints = ep;
-	}
+void	ClapTrap::setEnergyPoints(unsigned int ep)
+{
+	_energyPoints = ep;
+}
 
-	void	ClapTrap::setAttackDamage(unsigned int ad)
-	{
-		_attackDamage = ad;
-	}
+void	ClapTrap::setAttackDamage(unsigned int ad)
+{
+	_attackDamage = ad;
+}
 
-/************ Operators ************/
+/************ Operator ************/
 
 ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
 {
@@ -82,12 +83,13 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &copy)
 		if(this->_attackDamage != copy._attackDamage)
 			_attackDamage = copy._attackDamage;
 	}
-	return *this;
 
 	std::cout << YELLOW << "ClapTrap (" << _name << ") copy assignment operator called" << RST << std::endl;
+
+	return *this;
 }
 
-/************ Other ************/
+/************ Member Functions ************/
 
 void	ClapTrap::attack(const std::string& target)
 {
@@ -98,7 +100,7 @@ void	ClapTrap::attack(const std::string& target)
 	}
 	if (!_energyPoints)
 	{
-		std::cout << BLUE << "ClapTrap " << _name << " has no energy to attack " << target << "." << RST << std::endl;
+		std::cout << BLUE << "ClapTrap " << _name << " has no energy points to attack " << target << "." << RST << std::endl;
 		return ;
 	}
 	if (!_attackDamage)

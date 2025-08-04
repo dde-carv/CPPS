@@ -28,7 +28,7 @@ class ClapTrap
 		ClapTrap(const ClapTrap &object);
 		~ClapTrap();
 
-/************ Operators ************/
+/************ Operator ************/
 
 		ClapTrap		&operator=(const ClapTrap &copy);
 

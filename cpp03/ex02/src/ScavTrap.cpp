@@ -1,5 +1,7 @@
 #include "ScavTrap.hpp"
 
+/************ Constructors and Destructor ************/
+
 ScavTrap::ScavTrap() : ClapTrap(), _guardGate(false)
 {
 	_hitPoints = 100;
@@ -27,6 +29,8 @@ ScavTrap::~ScavTrap()
 	std::cout << RED << "ScavTrap (" << _name << ") default destructor called" << RST << std::endl;
 }
 
+/************ Operator ************/
+
 ScavTrap	&ScavTrap::operator=(const ScavTrap &copy)
 {
 	if(this != &copy)
@@ -42,20 +46,27 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &copy)
 		if(this->_guardGate != copy._guardGate)
 			_guardGate = copy._guardGate;
 	}
+
 	std::cout << YELLOW << "ScavTrap (" << _name << ") copy assignment operator called" << RST << std::endl;
 
 	return *this;
 }
+
+/************ Getter ************/
 
 bool	ScavTrap::getGardGate()
 {
 	return _guardGate;
 }
 
+/************ Setter ************/
+
 void	ScavTrap::setGardGate(bool mode)
 {
 	_guardGate = mode;
 }
+
+/************ Member Functions ************/
 
 void	ScavTrap::attack(const std::string& target)
 {

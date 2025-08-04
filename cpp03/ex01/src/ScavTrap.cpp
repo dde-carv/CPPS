@@ -46,6 +46,7 @@ ScavTrap	&ScavTrap::operator=(const ScavTrap &copy)
 		if(this->_guardGate != copy._guardGate)
 			_guardGate = copy._guardGate;
 	}
+	
 	std::cout << YELLOW << "ScavTrap (" << _name << ") copy assignment operator called" << RST << std::endl;
 
 	return *this;

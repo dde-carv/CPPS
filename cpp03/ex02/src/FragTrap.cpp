@@ -1,5 +1,7 @@
 #include "FragTrap.hpp"
 
+/************ Constructors and Destructor ************/
+
 FragTrap::FragTrap() : ClapTrap()
 {
 	_hitPoints = 100;
@@ -27,6 +29,8 @@ FragTrap::~FragTrap()
 	std::cout << RED << "FragTrap (" << _name << ") default destructor called" << RST << std::endl;
 }
 
+/************ Operator ************/
+
 FragTrap	&FragTrap::operator=(const FragTrap &copy)
 {
 	if(this != &copy)
@@ -44,6 +48,8 @@ FragTrap	&FragTrap::operator=(const FragTrap &copy)
 
 	return *this;
 }
+
+/************ Member Function ************/
 
 void	FragTrap::highFivesGuys()
 {
