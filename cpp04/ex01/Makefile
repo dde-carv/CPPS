@@ -1,4 +1,4 @@
-NAME		=	deep_copy
+NAME		=	abstract_class
 
 INC			=	inc/
 SRC_DIR		=	src/
