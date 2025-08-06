@@ -1,22 +1,23 @@
 #include "../inc/Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : Animal("Cat"), _brain(new Brain())
 {
-	_type = "Cat";
-	_brain = new Brain();
 	std::cout << GREEN << "Cat default constructor called." << RST << std::endl;
 }
 
-Cat::Cat(const Cat &object)
+Cat::Cat(std::string type) : Animal(type), _brain(new Brain())
 {
-	_brain = new Brain();
-	*this = object;
+	std::cout << GREEN << "Cat costum constructor called." << RST << std::endl;
+}
+
+Cat::Cat(const Cat &object) : Animal(object), _brain(new Brain(*object._brain))
+{
 	std::cout << GREEN << "Cat copy constructor called" << RST << std::endl;
 }
 
 Cat::~Cat()
 {
-	delete _brain;
+	delete this->_brain;
 	std::cout << RED << "Cat default destructor called." << RST << std::endl;
 }
 
@@ -24,10 +25,11 @@ Cat	&Cat::operator=(const Cat &copy)
 {
 	if(this != &copy)
 	{
+		Animal::operator=(copy);
 		delete _brain;
-		_brain = new Brain(*(copy._brain));
-		if(this->_type != copy._type)
-			_type = copy._type;
+		_brain = NULL;
+		if (copy._brain)
+			_brain = new Brain(*copy._brain);
 	}
 	std::cout << YELLOW << "Cat copy assignment operator called" << RST << std::endl;
 
@@ -36,7 +38,7 @@ Cat	&Cat::operator=(const Cat &copy)
 
 Brain	*Cat::getCatBrain()const
 {
-	return _brain;
+	return this->_brain;
 }
 
 std::string	Cat::getCatIdea(int i)const
@@ -47,11 +49,6 @@ std::string	Cat::getCatIdea(int i)const
 void	Cat::setCatIdea(int i, std::string idea)
 {
 	_brain->setIdea(i, idea);
-}
-
-void	Cat::printCatIdeas(int limit)const
-{
-	_brain->printIdeas(limit);
 }
 
 void	Cat::makeSound() const

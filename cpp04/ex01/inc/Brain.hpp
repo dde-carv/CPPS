@@ -24,8 +24,10 @@ class Brain
 
 		Brain		&operator=(const Brain &copy);
 
-		std::string	getIdea(int i)const;
-		void		setIdea(int i, std::string idea);
+		std::string	getIdea(unsigned int i)const;
+		void		setIdea(std::string idea, std::string type);
 
-		void		printIdeas(int limit)const;
+		void		printIdeas(std::string type, unsigned int limit)const;
+
+		const unsigned int	fullCapacity;
 };

@@ -10,8 +10,9 @@ class Cat : public Animal
 
 	public:
 		Cat();
+		Cat(std::string type);
 		Cat(const Cat &object);
-		~Cat();
+		virtual ~Cat();
 
 		Cat			&operator=(const Cat &copy);
 
@@ -20,6 +21,6 @@ class Cat : public Animal
 
 		void		setCatIdea(int i, std::string idea);
 
-		void		makeSound()const;
+		virtual void		makeSound()const;
 		void		printCatIdeas(int limit)const;
 };

@@ -10,8 +10,9 @@ class Dog : public Animal
 
 	public:
 		Dog();
+		Dog(std::string type);
 		Dog(const Dog &object);
-		~Dog();
+		virtual ~Dog();
 
 		Dog			&operator=(const Dog &copy);
 
@@ -20,6 +21,6 @@ class Dog : public Animal
 
 		void		setDogIdea(int i, std::string idea);
 
-		void		makeSound()const;
-		void		printDogIdeas(int limit)const;
+		virtual void	makeSound() const;
+		void			printDogIdeas(int limit)const;
 };

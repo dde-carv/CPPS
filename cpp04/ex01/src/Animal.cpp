@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "../inc/Animal.hpp"
 
 /************ Constructors and Destructor ************/
 
@@ -7,10 +7,13 @@ Animal::Animal() : _type("animal")
 	std::cout << GREEN << "Animal default constructor called." << RST << std::endl;
 }
 
-Animal::Animal(const Animal &object)
+Animal::Animal(std::string type) : _type(type)
 {
-	*this = object;
+	std::cout << GREEN << "Animal costum constructor called." << RST << std::endl;
+}
 
+Animal::Animal(const Animal &object) : _type(object._type)
+{
 	std::cout << GREEN << "Animal copy constructor called" << RST << std::endl;
 }
 
@@ -37,12 +40,7 @@ std::string	Animal::getType() const
 
 Animal	&Animal::operator=(const Animal &copy)
 {
-	if(this == &copy)
-	{
-		if(this->_type != copy._type)
-			_type = copy._type;
-	}
-	else
+	if(this != &copy)
 		_type = copy._type;
 
 	std::cout << YELLOW << "Animal copy assignment operator called" << RST << std::endl;
@@ -52,7 +50,7 @@ Animal	&Animal::operator=(const Animal &copy)
 
 /************ Member Function ************/
 
-void	Animal::makeSound() const
+void	Animal::makeSound()const
 {
 	std::cout << PURPLE << "Animal sound!" << RST << std::endl;
 }
