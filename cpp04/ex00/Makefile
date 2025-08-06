@@ -10,7 +10,9 @@ RM			=	rm -f
 CLAP		=	$(SRC_DIR)main.cpp \
 				$(SRC_DIR)Animal.cpp \
 				$(SRC_DIR)Dog.cpp \
-				$(SRC_DIR)Cat.cpp
+				$(SRC_DIR)Cat.cpp \
+				$(SRC_DIR)WrongAnimal.cpp \
+				$(SRC_DIR)WrongCat.cpp
 
 
 SRCS		=	$(CLAP)

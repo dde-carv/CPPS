@@ -1,14 +1,17 @@
-#include "Dog.hpp"
+#include "../inc/Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : Animal("Dog")
 {
-	_type = "Dog";
 	std::cout << GREEN << "Dog default constructor called." << RST << std::endl;
 }
 
-Dog::Dog(const Dog &object)
+Dog::Dog(std::string type) : Animal(type)
 {
-	*this = object;
+	std::cout << GREEN << "Dog costum constructor called." << RST << std::endl;
+}
+
+Dog::Dog(const Dog &object) : Animal(object)
+{
 	std::cout << GREEN << "Dog copy constructor called" << RST << std::endl;
 }
 
@@ -20,10 +23,8 @@ Dog::~Dog()
 Dog	&Dog::operator=(const Dog &copy)
 {
 	if(this != &copy)
-	{
-		if(this->_type != copy._type)
-			_type = copy._type;
-	}
+		Animal::operator=(copy);
+
 	std::cout << YELLOW << "Dog copy assignment operator called" << RST << std::endl;
 
 	return *this;

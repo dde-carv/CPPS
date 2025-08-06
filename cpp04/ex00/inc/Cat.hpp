@@ -6,10 +6,11 @@ class Cat : public Animal
 {
 	public:
 		Cat();
+		Cat(std::string type);
 		Cat(const Cat &object);
-		~Cat();
+		virtual ~Cat();
 
-		Cat		&operator=(const Cat &copy);
+		Cat				&operator=(const Cat &copy);
 
-		void	makeSound() const;
+		virtual void	makeSound() const;
 };

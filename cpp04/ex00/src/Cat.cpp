@@ -1,14 +1,17 @@
-#include "Cat.hpp"
+#include "../inc/Cat.hpp"
 
-Cat::Cat()
+Cat::Cat() : Animal("Cat")
 {
-	_type = "Cat";
 	std::cout << GREEN << "Cat default constructor called." << RST << std::endl;
 }
 
-Cat::Cat(const Cat &object)
+Cat::Cat(std::string type) : Animal(type)
 {
-	*this = object;
+	std::cout << GREEN << "Cat costum constructor called." << RST << std::endl;
+}
+
+Cat::Cat(const Cat &object) : Animal(object)
+{
 	std::cout << GREEN << "Cat copy constructor called" << RST << std::endl;
 }
 
@@ -20,10 +23,7 @@ Cat::~Cat()
 Cat	&Cat::operator=(const Cat &copy)
 {
 	if(this != &copy)
-	{
-		if(this->_type != copy._type)
-			_type = copy._type;
-	}
+		Animal::operator=(copy);
 	std::cout << YELLOW << "Cat copy assignment operator called" << RST << std::endl;
 
 	return *this;
