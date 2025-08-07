@@ -39,12 +39,12 @@ Brain	*Cat::getCatBrain()const
 	return _brain;
 }
 
-std::string	Cat::getCatIdea(int i)const
+std::string	Cat::getIdea(int i)const
 {
 	return _brain->getIdea(i);
 }
 
-void	Cat::setCatIdea(int i, std::string idea)
+void	Cat::setIdea(int i, std::string idea)
 {
 	_brain->setIdea(i, idea);
 }

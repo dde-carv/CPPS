@@ -16,9 +16,9 @@ class Dog : public AAnimal
 		Dog			&operator=(const Dog &copy);
 
 		Brain		*getDogBrain()const;
-		std::string	getDogIdea(int i)const;
+		std::string	getIdea(int i)const;
 
-		void		setDogIdea(int i, std::string idea);
+		void		setIdea(int i, std::string idea);
 
 		void		makeSound()const;
 		void		printDogIdeas(int limit)const;

@@ -39,12 +39,12 @@ Brain	*Dog::getDogBrain()const
 	return _brain;
 }
 
-std::string	Dog::getDogIdea(int i)const
+std::string	Dog::getIdea(int i)const
 {
 	return _brain->getIdea(i);
 }
 
-void	Dog::setDogIdea(int i, std::string idea)
+void	Dog::setIdea(int i, std::string idea)
 {
 	_brain->setIdea(i, idea);
 }
