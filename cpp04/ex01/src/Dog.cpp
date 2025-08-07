@@ -41,16 +41,6 @@ Brain	*Dog::getDogBrain()const
 	return this->_brain;
 }
 
-std::string	Dog::getDogIdea(int i)const
-{
-	return _brain->getIdea(i);
-}
-
-void	Dog::setDogIdea(std::string idea)
-{
-	_brain->setIdea(idea);
-}
-
 void	Dog::makeSound() const
 {
 	std::cout << PURPLE << "WOOOOF WOOFF WOOOOOOOOF..." << RST << std::endl;

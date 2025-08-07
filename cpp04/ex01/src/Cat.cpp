@@ -41,16 +41,6 @@ Brain	*Cat::getCatBrain()const
 	return this->_brain;
 }
 
-std::string	Cat::getCatIdea(int i)const
-{
-	return _brain->getIdea(i);
-}
-
-void	Cat::setCatIdea(int i, std::string idea)
-{
-	_brain->setIdea(i, idea);
-}
-
 void	Cat::makeSound() const
 {
 	std::cout << PURPLE << "MeeeeEEEEeeeEEeeOOooooOW!" << RST << std::endl;

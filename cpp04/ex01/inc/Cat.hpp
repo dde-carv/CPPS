@@ -17,9 +17,6 @@ class Cat : public Animal
 		Cat			&operator=(const Cat &copy);
 
 		Brain		*getCatBrain()const;
-		std::string	getCatIdea(int i)const;
-
-		void		setCatIdea(int i, std::string idea);
 
 		virtual void		makeSound()const;
 		void		printCatIdeas(int limit)const;

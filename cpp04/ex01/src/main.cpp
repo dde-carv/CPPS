@@ -43,12 +43,12 @@ void	test3()
 	Patareco->printCatIdeas(4);
 
 	std::cout << std::endl;
-	Patareco->setCatIdea(1, "Scratch my back!");
-	Patareco->setCatIdea(2, "Scratch my back!");
-	Patareco->setCatIdea(3, "Scratch my back!");
+	Patareco->setIdea(1, "Scratch my back!");
+	Patareco->setIdea(2, "Scratch my back!");
+	Patareco->setIdea(3, "Scratch my back!");
 	Cat	*copy_cat = new Cat(*Patareco);
-	Patareco->setCatIdea(1, "What a confortable box to sleep in...");
-	copy_cat->setCatIdea(0, "Fur ball!");
+	Patareco->setIdea(1, "What a confortable box to sleep in...");
+	copy_cat->setIdea(0, "Fur ball!");
 
 	std::cout << "\nPatareco: (" << Patareco->getCatBrain() << ")\n";
 	Patareco->printCatIdeas(4);
