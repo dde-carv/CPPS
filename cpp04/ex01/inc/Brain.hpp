@@ -27,7 +27,7 @@ class Brain
 		std::string	getIdea(unsigned int i)const;
 		void		setIdea(std::string idea, std::string type);
 
-		void		printIdeas(std::string type, unsigned int limit)const;
+		void		printIdeas(std::string type, unsigned int limit);
 
 		const unsigned int	fullCapacity;
 };

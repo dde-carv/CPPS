@@ -1,4 +1,4 @@
-#include "Brain.hpp"
+#include "../inc/Brain.hpp"
 
 Brain::Brain() : fullCapacity(100)
 {
@@ -56,7 +56,7 @@ void	Brain::setIdea(std::string idea, std::string type)
 	return ;
 }
 
-void	Brain::printIdeas(std::string type, unsigned int index)const
+void	Brain::printIdeas(std::string type, unsigned int index)
 {
 	for (unsigned int i = 0; i < this->fullCapacity; i++)
 	{
