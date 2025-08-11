@@ -1,15 +1,14 @@
-#include "Brain.hpp"
+#include "../inc/Brain.hpp"
 
-Brain::Brain()
+Brain::Brain() : fullCapacity(100)
 {
-	for (int i = 0; i < 100; i++)
-		_ideas[i] = "I'm hungry!";
 	std::cout << GREEN << "Brain default constructor called." << RST << std::endl;
 }
 
-Brain::Brain(const Brain &object)
+Brain::Brain(const Brain &object) : fullCapacity(100)
 {
-	*this = object;
+	for (unsigned int i = 0; i < fullCapacity; i++)
+		this->_ideas[i] = object._ideas[i];
 	std::cout << GREEN << "Brain copy constructor called." << RST << std::endl;
 }
 
@@ -22,10 +21,10 @@ Brain	&Brain::operator=(const Brain &copy)
 {
 	if(this != &copy)
 	{
-		for(int i = 0; i < 100; i++)
+		for(unsigned int i = 0; i < fullCapacity; i++)
 		{
-			if (this->_ideas[i] != copy._ideas[i])
-				_ideas[i] = copy._ideas[i];
+			if (copy._ideas[i].length())
+				this->_ideas[i] = copy._ideas[i];
 		}
 	}
 	std::cout << YELLOW << "Brain copy assignment operator called." << RST << std::endl;
@@ -33,21 +32,35 @@ Brain	&Brain::operator=(const Brain &copy)
 	return *this;
 }
 
-std::string	Brain::getIdea(int i)const
+std::string	Brain::getIdea(unsigned int i)const
 {
-	if (i >= 0 && i < 100)
-		return (_ideas[i]);
-	return (NULL);
+	if (i < fullCapacity)
+		return this->_ideas[i];
+	std::cout << "I have no idea what are you talking about..." << std::endl;
+	return "";
 }
 
-void	Brain::setIdea(int i, std::string idea)
+void	Brain::setIdea(std::string idea, std::string type)
 {
-	if (i >= 0 && i < 100)
-		_ideas[i] = idea;
+	for (unsigned int i = 0; i < this->fullCapacity; i++)
+	{
+		if(!this->_ideas[i].length())
+		{
+			this->_ideas[i] = idea;
+			std::cout << type << " stored an idea at " << i << " index!" << std::endl;
+			return ;
+		}
+	}
+	std::cout << "There is no more space to dream..." << std::endl;
+
+	return ;
 }
 
-void	Brain::printIdeas(int limit)const
+void	Brain::printIdeas(std::string type)
 {
-	for (int i = 0; i < 100 && i < limit; i++)
-		std::cout << PURPLE << i << ": \"" << _ideas[i] << "\"" << RST << std::endl;
+	for (unsigned int i = 0; i < this->fullCapacity; i++)
+	{
+		if (this->getIdea(i).length())
+			std::cout << PURPLE << type << " " << i << " stored idea i: \"" << this->getIdea(i) << "\"" << RST << std::endl;
+	}
 }

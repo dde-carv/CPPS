@@ -6,20 +6,17 @@
 class Dog : public AAnimal
 {
 	private:
-		Brain*	_brain;
+		Brain	*_brain;
 
 	public:
 		Dog();
+		Dog(std::string type);
 		Dog(const Dog &object);
-		~Dog();
+		virtual ~Dog();
 
 		Dog			&operator=(const Dog &copy);
 
-		Brain		*getDogBrain()const;
-		std::string	getIdea(int i)const;
+		Brain		*getBrain()const;
 
-		void		setIdea(int i, std::string idea);
-
-		void		makeSound()const;
-		void		printDogIdeas(int limit)const;
+		virtual void	makeSound()const;
 };

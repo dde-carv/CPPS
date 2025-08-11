@@ -6,20 +6,17 @@
 class Cat : public AAnimal
 {
 	private:
-		Brain*	_brain;
+		Brain	*_brain;
 
 	public:
 		Cat();
+		Cat(std::string type);
 		Cat(const Cat &object);
-		~Cat();
+		virtual ~Cat();
 
 		Cat			&operator=(const Cat &copy);
 
-		Brain		*getCatBrain()const;
-		std::string	getIdea(int i)const;
+		Brain		*getBrain()const;
 
-		void		setIdea(int i, std::string idea);
-
-		void		makeSound()const;
-		void		printCatIdeas(int limit)const;
+		virtual void		makeSound()const;
 };

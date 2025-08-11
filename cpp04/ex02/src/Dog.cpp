@@ -1,22 +1,23 @@
 #include "../inc/Dog.hpp"
 
-Dog::Dog()
+Dog::Dog() : AAnimal("Dog"), _brain(new Brain())
 {
-	_type = "Dog";
-	_brain = new Brain();
 	std::cout << GREEN << "Dog default constructor called." << RST << std::endl;
 }
 
-Dog::Dog(const Dog &object)
+Dog::Dog(std::string type) : AAnimal(type), _brain(new Brain())
 {
-	_brain = new Brain();
-	*this = object;
+	std::cout << GREEN << "Dog costum constructor called." << RST << std::endl;
+}
+
+Dog::Dog(const Dog &object) : AAnimal(object), _brain(new Brain(*object._brain))
+{
 	std::cout << GREEN << "Dog copy constructor called" << RST << std::endl;
 }
 
 Dog::~Dog()
 {
-	delete _brain;
+	delete this->_brain;
 	std::cout << RED << "Dog default destructor called." << RST << std::endl;
 }
 
@@ -24,34 +25,20 @@ Dog	&Dog::operator=(const Dog &copy)
 {
 	if(this != &copy)
 	{
+		AAnimal::operator=(copy);
 		delete _brain;
-		_brain = new Brain(*(copy._brain));
-		if(this->_type != copy._type)
-			_type = copy._type;
+		_brain = NULL;
+		if (copy._brain)
+			_brain = new Brain(*copy._brain);
 	}
 	std::cout << YELLOW << "Dog copy assignment operator called" << RST << std::endl;
 
 	return *this;
 }
 
-Brain	*Dog::getDogBrain()const
+Brain	*Dog::getBrain()const
 {
-	return _brain;
-}
-
-std::string	Dog::getIdea(int i)const
-{
-	return _brain->getIdea(i);
-}
-
-void	Dog::setIdea(int i, std::string idea)
-{
-	_brain->setIdea(i, idea);
-}
-
-void	Dog::printDogIdeas(int limit)const
-{
-	_brain->printIdeas(limit);
+	return this->_brain;
 }
 
 void	Dog::makeSound() const
