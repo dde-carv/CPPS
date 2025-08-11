@@ -36,7 +36,7 @@ Cat	&Cat::operator=(const Cat &copy)
 	return *this;
 }
 
-Brain	*Cat::getCatBrain()const
+Brain	*Cat::getBrain()const
 {
 	return this->_brain;
 }

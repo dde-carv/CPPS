@@ -36,7 +36,7 @@ Dog	&Dog::operator=(const Dog &copy)
 	return *this;
 }
 
-Brain	*Dog::getDogBrain()const
+Brain	*Dog::getBrain()const
 {
 	return this->_brain;
 }

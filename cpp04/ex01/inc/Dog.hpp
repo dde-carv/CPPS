@@ -6,7 +6,7 @@
 class Dog : public Animal
 {
 	private:
-		Brain*	_brain;
+		Brain	*_brain;
 
 	public:
 		Dog();
@@ -16,8 +16,7 @@ class Dog : public Animal
 
 		Dog			&operator=(const Dog &copy);
 
-		Brain		*getDogBrain()const;
+		Brain		*getBrain()const;
 
-		virtual void	makeSound() const;
-		void			printDogIdeas(int limit)const;
+		virtual void	makeSound()const;
 };

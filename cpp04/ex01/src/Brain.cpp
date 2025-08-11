@@ -37,12 +37,12 @@ std::string	Brain::getIdea(unsigned int i)const
 	if (i < fullCapacity)
 		return this->_ideas[i];
 	std::cout << "I have no idea what are you talking about..." << std::endl;
-	return NULL;
+	return "";
 }
 
 void	Brain::setIdea(std::string idea, std::string type)
 {
-	for (unsigned int i = 0; i < fullCapacity; i++)
+	for (unsigned int i = 0; i < this->fullCapacity; i++)
 	{
 		if(!this->_ideas[i].length())
 		{
@@ -56,11 +56,11 @@ void	Brain::setIdea(std::string idea, std::string type)
 	return ;
 }
 
-void	Brain::printIdeas(std::string type, unsigned int index)
+void	Brain::printIdeas(std::string type)
 {
 	for (unsigned int i = 0; i < this->fullCapacity; i++)
 	{
 		if (this->getIdea(i).length())
-			std::cout << PURPLE << type << " " << index << " stored idea i: \"" << this->getIdea(i) << "\"" << RST << std::endl;
+			std::cout << PURPLE << type << " " << i << " stored idea i: \"" << this->getIdea(i) << "\"" << RST << std::endl;
 	}
 }
