@@ -1,5 +1,4 @@
-NAME		=	abstract_class
-
+NAME		=	animal_brain
 INC			=	inc/
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
