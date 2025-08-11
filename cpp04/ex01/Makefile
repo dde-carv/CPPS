@@ -1,4 +1,4 @@
-NAME		=	animal_brain
+NAME		=	deep_copy
 INC			=	inc/
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/

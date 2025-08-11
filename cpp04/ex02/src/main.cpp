@@ -4,9 +4,9 @@
 
 void testAbstractAnimalClass()
 {
-	std::cout << GREEN << "\n-= Testing Abstract Animal =-" << RST << std::endl;
+	std::cout << std::endl << GREEN << "-= Testing Abstract Animal =-" << RST << std::endl;
 
-	std::cout << YELLOW << "Check code to validate class is indeed abstract\n" << RST << std::endl;
+	std::cout << YELLOW << "Check code to validate class is indeed abstract" << RST << std::endl << std::endl;
 	/* Uncomment to trigger compiler error */
 	/* Error: Cannot instantiate abstract class */
 	// AAnimal animal;
@@ -29,7 +29,7 @@ void testAbstractAnimalClass()
 	std::cout << "Cat sound: ";
 	cat->makeSound();
 
-	std::cout << YELLOW << "\nPolymorphism" << RST << std::endl;
+	std::cout << std::endl << YELLOW << "Polymorphism" << RST << std::endl;
 	AAnimal *animals[2] = {dog, cat};
 	for (int i = 0; i < 2; i++)
 	{
@@ -37,7 +37,7 @@ void testAbstractAnimalClass()
 		animals[i]->makeSound();
 	}
 
-	std::cout << YELLOW << "\nClean up" << RST << std::endl;
+	std::cout << std::endl << YELLOW << "Clean up" << RST << std::endl;
 	delete dog;
 	delete cat;
 }
@@ -46,7 +46,7 @@ int main()
 {
 	testAbstractAnimalClass();
 
-	std::cout << GREEN << "\nAll tests completed" << RST << std::endl;
+	std::cout << std::endl << GREEN << "All tests completed" << RST << std::endl;
 
 	return 0;
 }
