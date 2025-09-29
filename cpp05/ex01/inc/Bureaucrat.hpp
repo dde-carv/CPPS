@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:03:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:03:31 by dde-carv         ###   ########.fr       */
+/*   Created: 2025/09/29 17:07:21 by dde-carv          #+#    #+#             */
+/*   Updated: 2025/09/29 17:07:22 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,33 @@
 
 #include <iostream>
 
-class Animal
+class Bureaucrat
 {
-	protected:
-		std::string _type;
+	private:
+		const std::string	_name;
+		int					_grade;
 
 	public:
-		Animal();
-		Animal(std::string type);
-		Animal(const Animal &object);
-		virtual ~Animal();
+		Bureaucrat();
+		Bureaucrat(const std::string &name, int grade);
+		Bureaucrat(const Bureaucrat &other);
+		Bureaucrat &operator=(const Bureaucrat &other);
+		~Bureaucrat();
 
-		Animal			&operator=(const Animal &copy);
+		const std::string	getName() const;
+		int					getGrade() const;
 
-		void			setType(std::string type);
-		std::string		getType()const;
+		void	incrementGrade();
+		void	decrementGrade();
 
-		virtual void			makeSound()const;
+	class GradeTooHighException : public std::exception
+	{
+		virtual const char* what() const throw();
+	};
+	class GradeTooLowException : public std::exception
+	{
+		virtual const char* what() const throw();
+	};
 };
+
+std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object);
