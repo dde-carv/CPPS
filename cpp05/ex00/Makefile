@@ -1,4 +1,4 @@
-NAME		=	i_want_to_be_a_bureaucrat
+NAME		=	bureaucrat
 
 INC			=	inc/
 SRC_DIR		=	src/
