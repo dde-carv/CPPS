@@ -1,29 +1,27 @@
-NAME		=	bureaucrat
+NAME		=	form
 
-INC			=	inc/
+INC_DIR		=	inc/
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
-CC			=	c++ -Wall -Werror -Wextra -std=c++98
+CXX			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-CLAP		=	$(SRC_DIR)main.cpp \
-				$(SRC_DIR)Bureaucrat.cpp
-
-
-SRCS		=	$(CLAP)
+SRCS		=	$(SRC_DIR)main.cpp \
+				$(SRC_DIR)Bureaucrat.cpp \
+				$(SRC_DIR)Form.cpp
 
 OBJS		=	$(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				@$(CC) $(OBJS) -o $(NAME)
+				@$(CXX) $(OBJS) -o $(NAME)
 				@echo "\033[1;32m$(NAME) created.\033[0m"
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 				@mkdir -p $(@D)
-				@$(CC) -I$(INC) -c $< -o $@
+				@$(CXX) -I$(INC_DIR) -c $< -o $@
 
 clean:
 			@$(RM) -r $(OBJ_DIR)
