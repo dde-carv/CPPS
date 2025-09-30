@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:27 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:07:28 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/09/30 11:19:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,19 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade
 			throw GradeTooHighException();
 		if (_grade > 150)
 			throw GradeTooLowException();
-		std::cout << GREEN << "Bureaucrat " << _name << " has a valid Grade" << " >> "\
+		std::cout << GREEN << "Bureaucrat " << _name << " has a valid grade -> "\
 		 << _grade << ", accepted!" << std::endl << RST;
 	}
 	catch(const std::exception &e)
 	{
-		std::cout << RED << "Constructor exception (" << _name << "): "\
+		std::cout << RED << "Bureaucrat constructor exception (" << _name << "): "\
 		 << e.what() << std::endl << RST;
 	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name)
 {
-	std::cout << GREEN << "Bureaucrat copy constructor called\n" << RST;
+	std::cout << GREEN << "Bureaucrat copy constructor called" << std::endl << RST;
 
 	*this = other;
 }
