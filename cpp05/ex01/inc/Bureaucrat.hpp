@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:21 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:07:22 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:47:35 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define RST "\033[0m"
 
 #include <iostream>
+#include "Form.hpp"
 
 class Bureaucrat
 {
@@ -42,6 +43,7 @@ class Bureaucrat
 
 		void	incrementGrade();
 		void	decrementGrade();
+		void	signForm(Form &form);
 
 	class GradeTooHighException : public std::exception
 	{

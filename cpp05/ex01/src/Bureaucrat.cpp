@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:27 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/30 11:19:08 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/01 11:48:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,15 @@ void	Bureaucrat::decrementGrade()
 		std::cout << RED << "Grade decrementing exception (" << _name << "): "\
 		 << e.what() << std::endl << RST;
 	}
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	int	sign_status;
+
+	sign_status = form.beSigned(*this);
+	if (sign_status == SIGNED)
+		
 }
 
 /************ Execeptions ************/

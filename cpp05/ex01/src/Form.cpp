@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/01 08:43:35 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/01 10:54:56 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,23 @@ bool		Form::getSigned() const
 
 int			Form::beSigned(const Bureaucrat &bur)
 {
-	
+	try
+	{
+		if (getSigned() == true)
+			return PREVIOUSLY_SIGNED;
+		if (bur.getGrade() <= getGradeToSign())
+		{
+			_signed = true;
+			return SIGNED;
+		}
+		else
+			throw GradeTooLowException();
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << "beSigned exeption: " << e.what() << std::endl;
+		return NOT_SIGNED;
+	}
 }
 
 /************ Execeptions ************/
@@ -106,6 +122,7 @@ Form &Form::operator=(const Form &other)
 
 std::ostream	&operator<<(std::ostream &stream, const Form &object)
 {
-	stream << std::endl;
+	stream << object.getName() << ", bureaucrat expected grade to sign is " << object.getGradeToSign() \
+	<< " and grade to execute is " << object.getGradeToExec() << "." << std::endl;
 	return stream;
 }

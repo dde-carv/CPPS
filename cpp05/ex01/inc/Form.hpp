@@ -6,11 +6,15 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/01 08:43:10 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/01 10:49:40 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
+#define NOT_SIGNED 0
+#define SIGNED 1
+#define PREVIOUSLY_SIGNED 2
 
 #include "Bureaucrat.hpp"
 
