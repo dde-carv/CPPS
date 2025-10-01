@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:27 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/01 11:48:08 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:06:50 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,16 @@ void	Bureaucrat::signForm(Form &form)
 
 	sign_status = form.beSigned(*this);
 	if (sign_status == SIGNED)
-		
+		std::cout << _name << " signed the " << form.getName() << " form." << std::endl;
+	else
+	{
+		std::cout << _name << " couldn't sign the " << form.getName() << " because ";
+		if (sign_status == NOT_SIGNED)
+			std::cout << _name << " needs at least a grade of " << form.getGradeToSign() \
+			<< " and his grade is " << _grade << "." << std::endl;
+		else
+			std::cout << "the form is already signed." << "." << std::endl;
+	}
 }
 
 /************ Execeptions ************/
@@ -131,6 +140,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object)
 {
-	stream << object.getName() << " , bureaucrat grade " << object.getGrade() << "." << std::endl;
+	stream << object.getName() << ", bureaucrat grade " << object.getGrade() << "." << std::endl;
 	return stream;
 }
