@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/30 11:47:15 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/01 08:43:35 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ bool		Form::getSigned() const
 
 /************ Member Function ************/
 
-
+int			Form::beSigned(const Bureaucrat &bur)
+{
+	
+}
 
 /************ Execeptions ************/
 

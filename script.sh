@@ -96,7 +96,7 @@ class $CLASS_NAME
 		$CLASS_NAME();
 		$CLASS_NAME(/* Add parameters here */);
 		$CLASS_NAME(const $CLASS_NAME &other);
-		$CLASS_NAME &operator=(const $CLASS_NAME &other);
+		$CLASS_NAME	&operator=(const $CLASS_NAME &other);
 		~$CLASS_NAME();
 };
 EOL
