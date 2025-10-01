@@ -98,6 +98,8 @@ class $CLASS_NAME
 		$CLASS_NAME(const $CLASS_NAME &other);
 		$CLASS_NAME	&operator=(const $CLASS_NAME &other);
 		~$CLASS_NAME();
+
+		// Add member functions here
 };
 EOL
 
