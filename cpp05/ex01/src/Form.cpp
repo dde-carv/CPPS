@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/01 10:54:56 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/02 08:43:15 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ Form::~Form()
 
 /************ Getters ************/
 
-const std::string	Form::getName() const
+std::string	Form::getName() const
 {
 	return _name;
 }
 
-const int	Form::getGradeToSign() const
+int	Form::getGradeToSign() const
 {
 	return _gradeToSign;
 }
 
-const int	Form::getGradeToExec() const
+int	Form::getGradeToExec() const
 {
 	return _gradeToExec;
 }

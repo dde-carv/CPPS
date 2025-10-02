@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/01 10:49:40 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/02 08:44:20 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #define PREVIOUSLY_SIGNED 2
 
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
@@ -33,9 +35,9 @@ class Form
 		Form	&operator=(const Form &other);
 		~Form();
 
-		const std::string	getName() const;
-		const int			getGradeToSign() const;
-		const int			getGradeToExec() const;
+		std::string	getName() const;
+		int			getGradeToSign() const;
+		int			getGradeToExec() const;
 		bool				getSigned() const;
 
 		int					beSigned(const Bureaucrat &bur);

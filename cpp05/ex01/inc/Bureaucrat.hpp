@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:21 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/01 11:47:35 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/02 08:44:49 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 #include <iostream>
 #include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
