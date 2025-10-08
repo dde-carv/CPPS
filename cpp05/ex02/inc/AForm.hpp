@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:01 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 13:53:29 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:45:11 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,24 @@ class AForm
 		int			getGradeToExec() const;
 		bool		getSigned() const;
 
-		int					beSigned(const Bureaucrat &bur);
+		void		beSigned(const Bureaucrat &bur);
+		void		checkExecute(const Bureaucrat &executor) const;
+		virtual void	execute(const Bureaucrat &executor) = 0;
+
 
 	class GradeTooHighException : public std::exception
 	{
 		virtual const char* what() const throw();
 	};
 	class GradeTooLowException : public std::exception
+	{
+		virtual const char* what() const throw();
+	};
+	class	AlreadySignedException: public std::exception
+	{
+		virtual const char* what() const throw();
+	};
+	class	NotSignedException: public std::exception
 	{
 		virtual const char* what() const throw();
 	};

@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:20 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 12:01:29 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/08 17:52:43 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,37 +75,43 @@ bool		AForm::getSigned() const
 
 /************ Member Function ************/
 
-int			AForm::beSigned(const Bureaucrat &bur)
+void		AForm::beSigned(const Bureaucrat &bur)
 {
-	try
-	{
-		if (getSigned() == true)
-			return PREVIOUSLY_SIGNED;
-		if (bur.getGrade() <= getGradeToSign())
-		{
-			_signed = true;
-			return SIGNED;
-		}
-		else
-			throw GradeTooLowException();
-	}
-	catch(const std::exception& e)
-	{
-		std::cout << "beSigned exeption: " << e.what() << std::endl;
-		return NOT_SIGNED;
-	}
+	if (getSigned() == true)
+		throw AlreadySignedException();
+	if (bur.getGrade() > getGradeToSign())
+		throw GradeTooLowException();
+	_signed = true;
+}
+
+void		AForm::checkExecute(const Bureaucrat &executor) const
+{
+	if (getSigned() == false)
+		throw NotSignedException();
+	if (executor.getGrade() > getGradeToExec())
+		throw Bureaucrat::GradeTooLowException();
 }
 
 /************ Execeptions ************/
 
 const char* AForm::GradeTooHighException::what() const throw()
 {
-	return "the AForm grade is too high!!";
+	return "the form grade is too high!!";
 }
 
 const char* AForm::GradeTooLowException::what() const throw()
 {
-	return "the AForm grade is too low!!";
+	return "the form grade is too low!!";
+}
+
+const char* AForm::AlreadySignedException::what() const throw()
+{
+	return "the form has already been signed by someone!";
+}
+
+const char* AForm::NotSignedException::what() const throw()
+{
+	return "the form is not signed, do it first before trying to execute it!";
 }
 
 /************ Operators ************/
