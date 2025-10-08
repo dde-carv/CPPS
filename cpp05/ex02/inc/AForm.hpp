@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 17:07:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 10:49:12 by dde-carv         ###   ########.fr       */
+/*   Created: 2025/10/08 10:39:01 by dde-carv          #+#    #+#             */
+/*   Updated: 2025/10/08 13:53:29 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#define NOT_SIGNED 0
-#define SIGNED 1
-#define PREVIOUSLY_SIGNED 2
-
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
-	private:
+	protected:
 		const std::string	_name;
 		const int			_gradeToSign;
 		const int			_gradeToExec;
 		bool				_signed;
 
+		AForm();
+		AForm(const std::string &name, const int &gradeToSign, const int &gradeToExec);
+		AForm(const AForm &other);
+
 	public:
-		Form();
-		Form(const std::string &name, const int &gradeToSign, const int &gradeToExec);
-		Form(const Form &other);
-		Form	&operator=(const Form &other);
-		~Form();
+		AForm	&operator=(const AForm &other);
+		virtual	~AForm() = 0;
 
 		std::string	getName() const;
 		int			getGradeToSign() const;
