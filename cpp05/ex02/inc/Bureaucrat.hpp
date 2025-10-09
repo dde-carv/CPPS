@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:21 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/02 08:44:49 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/09 14:18:40 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define RST "\033[0m"
 
 #include <iostream>
+#include <fstream>
 #include "Form.hpp"
 
 class Form;

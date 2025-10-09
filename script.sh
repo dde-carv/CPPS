@@ -85,6 +85,16 @@ create_class() {
   cat <<EOL > "$HPP_FILE"
 #pragma once
 
+# define BLACK "\033[0;30m"
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define PURPLE "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define WHITE "\033[0;37m"
+# define RST "\033[0m"
+
 #include <iostream>
 
 class $CLASS_NAME
@@ -111,17 +121,17 @@ EOL
 
 $CLASS_NAME::$CLASS_NAME()
 {
-	std::cout << "Default constructor called." << std::endl;
+	std::cout << GREEN << "$CLASS_NAME default constructor called." << RST << std::endl;
 }
 
 $CLASS_NAME::$CLASS_NAME(/* Add parameters here */)
 {
-	std::cout << "Custom constructor called." << std::endl;
+	std::cout << GREEN << "$CLASS_NAME custom constructor called." << RST << std::endl;
 }
 
 $CLASS_NAME::$CLASS_NAME(const $CLASS_NAME &other)
 {
-	std::cout << "Copy constructor called." << std::endl;
+	std::cout << GREEN << "$CLASS_NAME copy constructor called." << RST << std::endl;
 	*this = other;
 }
 
@@ -131,13 +141,13 @@ $CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &other)
 	{
 		// Copy attributes here
 	}
-	std::cout << "Copy assignment operator called." << std::endl;
+	std::cout << YELLOW << "$CLASS_NAME copy assignment operator called." << RST << std::endl;
 	return *this;
 }
 
 $CLASS_NAME::~$CLASS_NAME()
 {
-	std::cout << "Destructor called." << std::endl;
+	std::cout << RED << "$CLASS_NAME destructor called." << RST << std::endl;
 }
 EOL
 

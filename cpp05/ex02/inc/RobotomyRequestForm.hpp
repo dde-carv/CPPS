@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:12 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 13:42:49 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/09 13:32:11 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 #include "AForm.hpp"
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public AForm
 {
-	private:
-		// Add private attributes here
-
 	public:
 		RobotomyRequestForm();
-		RobotomyRequestForm(/* Add parameters here */);
+		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm &other);
 		RobotomyRequestForm	&operator=(const RobotomyRequestForm &other);
 		~RobotomyRequestForm();
 
-		// Add member functions here
+		void	execute(Bureaucrat const &executor);
 };
