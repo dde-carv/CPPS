@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:01 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 17:45:11 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/09 10:00:25 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,13 @@ class AForm
 {
 	protected:
 		const std::string	_name;
+		const std::string	_target;
 		const int			_gradeToSign;
 		const int			_gradeToExec;
 		bool				_signed;
 
 		AForm();
-		AForm(const std::string &name, const int &gradeToSign, const int &gradeToExec);
+		AForm(const std::string &name, const std::string &target, const int &gradeToSign, const int &gradeToExec);
 		AForm(const AForm &other);
 
 	public:

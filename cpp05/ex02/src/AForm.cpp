@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:20 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 17:52:43 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/09 10:29:56 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 /************ Constructors and Destructor ************/
 
-AForm::AForm() : _name("AForm"), _gradeToSign(150), _gradeToExec(150), _signed(false)
+AForm::AForm()
+ : _name("Default"), _target("Default"), _gradeToSign(150), _gradeToExec(150), _signed(false)
 {
 	std::cout << GREEN << "AForm default constructor called" << std::endl << RST;
 }
 
-AForm::AForm(const std::string &name, const int &gradeToSign, const int &gradeToExec)
- : _name(name), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec), _signed(false)
+AForm::AForm(const std::string &name, const std::string &target, const int &gradeToSign, const int &gradeToExec)
+ : _name(name), _target(target), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec), _signed(false)
 {
 	std::cout << GREEN << "AForm custom constructor called" << std::endl << RST;
 
@@ -48,7 +49,7 @@ AForm::AForm(const AForm &other)
 
 AForm::~AForm()
 {
-	std::cout << GREEN << "AForm default destructor called" << std::endl << RST;
+	std::cout << RED << "AForm default destructor called" << std::endl << RST;
 }
 
 /************ Getters ************/
@@ -121,7 +122,7 @@ AForm &AForm::operator=(const AForm &other)
 	if (this != &other)
 		_signed = other._signed;
 
-	std::cout << GREEN << "AForm copy assignment operator called" << std::endl << RST;
+	std::cout << YELLOW << "AForm copy assignment operator called" << std::endl << RST;
 
 	return *this;
 }

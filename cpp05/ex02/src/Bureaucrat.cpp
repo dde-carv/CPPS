@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:27 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/01 15:06:50 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/09 10:29:40 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << GREEN << "Bureaucrat default destructor called" << std::endl << RST;
+	std::cout << RED << "Bureaucrat default destructor called" << std::endl << RST;
 }
 
 /************ Getters ************/
@@ -133,7 +133,7 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 	if (this != &other)
 		_grade = other._grade;
 
-	std::cout << GREEN << "Bureaucrat copy assignment operator called" << std::endl << RST;
+	std::cout << YELLOW << "Bureaucrat copy assignment operator called" << std::endl << RST;
 
 	return *this;
 }

@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:08 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 13:42:40 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/09 09:50:46 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 #include "AForm.hpp"
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public AForm
 {
-	private:
-		// Add private attributes here
-
 	public:
 		PresidentialPardonForm();
-		PresidentialPardonForm(/* Add parameters here */);
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm &other);
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm &other);
 		~PresidentialPardonForm();
 
-		// Add member functions here
+		void	execute(Bureaucrat const &executor);
 };
