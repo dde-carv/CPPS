@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:06:10 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:06:11 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ std::string	Brain::getIdea(unsigned int i)const
 {
 	if (i < fullCapacity)
 		return this->_ideas[i];
-	std::cout << "I have no idea what are you talking about..." << std::endl;
+	std::cout << "I have no idea what are you talking about..." << RST << std::endl;
 	return "";
 }
 
@@ -59,11 +59,11 @@ void	Brain::setIdea(std::string idea, std::string type)
 		if(!this->_ideas[i].length())
 		{
 			this->_ideas[i] = idea;
-			std::cout << type << " stored an idea at " << i << " index!" << std::endl;
+			std::cout << type << " stored an idea at " << i << " index!" << RST << std::endl;
 			return ;
 		}
 	}
-	std::cout << "There is no more space to dream..." << std::endl;
+	std::cout << "There is no more space to dream..." << RST << std::endl;
 
 	return ;
 }

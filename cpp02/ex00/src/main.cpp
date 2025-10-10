@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:00:05 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:00:06 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ int	main()
 
 	c = b;
 
-	std::cout << "---------- Before setRawBits: ----------" << std::endl;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	std::cout << "---------- Before setRawBits: ----------" << RST << std::endl;
+	std::cout << a.getRawBits() << RST << std::endl;
+	std::cout << b.getRawBits() << RST << std::endl;
+	std::cout << c.getRawBits() << RST << std::endl;
 
 	a.setRawBits(42);
 	b.setRawBits(42);
 	c.setRawBits(42);
 
-	std::cout << std::endl << "---------- After setRawBits: ----------" << std::endl;
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
+	std::cout << RST << std::endl << "---------- After setRawBits: ----------" << RST << std::endl;
+	std::cout << a.getRawBits() << RST << std::endl;
+	std::cout << b.getRawBits() << RST << std::endl;
+	std::cout << c.getRawBits() << RST << std::endl;
 
 	return 0;
 }

@@ -6,11 +6,11 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:06 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:07:07 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 15:46:38 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 void	test1()
 {
@@ -48,7 +48,6 @@ void	test2()
 	std::cout << "This is " << libna;
 	std::cout << "\n";
 }
-
 
 int	main()
 {

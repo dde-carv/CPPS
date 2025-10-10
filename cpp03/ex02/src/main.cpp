@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:03:00 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:03:01 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int main()
 	std::cout << "\t";
 	Joaozinho.highFivesGuys();
 	std::cout << "\n	Hit Points: " << Joaozinho.getHitPoints();
-	std::cout << "\n	Energy Points: " << Joaozinho.getEnergyPoints() << std::endl;
+	std::cout << "\n	Energy Points: " << Joaozinho.getEnergyPoints() << RST << std::endl;
 }

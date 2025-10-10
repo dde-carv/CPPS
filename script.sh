@@ -115,7 +115,7 @@ EOL
 
   # Populate the .cpp file
   cat <<EOL > "$CPP_FILE"
-#include "${CLASS_NAME}.hpp"
+#include "../inc/${CLASS_NAME}.hpp"
 
 /************ Constructors and Destructor ************/
 

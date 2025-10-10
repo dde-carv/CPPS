@@ -6,12 +6,12 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:33 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/02 08:30:51 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:09:35 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 
 void	test1()
 {

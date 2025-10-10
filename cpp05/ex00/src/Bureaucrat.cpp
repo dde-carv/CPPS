@@ -6,22 +6,22 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:03 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 11:36:33 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "../inc/Bureaucrat.hpp"
 
 /************ Constructors and Destructor ************/
 
 Bureaucrat::Bureaucrat() : _name("Leclerc"), _grade(150)
 {
-	std::cout << GREEN << "Bureaucrat default constructor called" << std::endl << RST;
+	std::cout << GREEN << "Bureaucrat default constructor called" << RST << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade)
 {
-	std::cout << GREEN << "Bureaucrat custom constructor called" << std::endl << RST;
+	std::cout << GREEN << "Bureaucrat custom constructor called" << RST << std::endl;
 	try
 	{
 		if (_grade < 1)
@@ -29,18 +29,18 @@ Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade
 		if (_grade > 150)
 			throw GradeTooLowException();
 		std::cout << GREEN << "Bureaucrat " << _name << " has a valid grade -> "\
-		 << _grade << ", accepted!" << std::endl << RST;
+		 << _grade << ", accepted!" << RST << std::endl;
 	}
 	catch(const std::exception &e)
 	{
 		std::cout << RED << "Constructor exception (" << _name << "): "\
-		 << e.what() << std::endl << RST;
+		 << e.what() << RST << std::endl;
 	}
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name)
 {
-	std::cout << GREEN << "Bureaucrat copy constructor called" << std::endl << RST;
+	std::cout << GREEN << "Bureaucrat copy constructor called" << RST << std::endl;
 
 	*this = other;
 }
@@ -50,14 +50,14 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 	if (this != &other)
 		_grade = other._grade;
 
-	std::cout << GREEN << "Bureaucrat copy assignment operator called" << std::endl << RST;
+	std::cout << YELLOW << "Bureaucrat copy assignment operator called" << RST << std::endl;
 
 	return *this;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << GREEN << "Bureaucrat default destructor called" << std::endl << RST;
+	std::cout << RED << "Bureaucrat default destructor called" << RST << std::endl;
 }
 
 /************ Getters ************/
@@ -86,7 +86,7 @@ void	Bureaucrat::incrementGrade()
 	catch (std::exception &e)
 	{
 		std::cout << RED << "Grade incrementing exception (" << _name << "): "\
-		 << e.what() << std::endl << RST;
+		 << e.what() << RST << std::endl;
 	}
 }
 
@@ -102,7 +102,7 @@ void	Bureaucrat::decrementGrade()
 	catch (std::exception &e)
 	{
 		std::cout << RED << "Grade decrementing exception (" << _name << "): "\
-		 << e.what() << std::endl << RST;
+		 << e.what() << RST << std::endl;
 	}
 }
 
@@ -122,6 +122,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object)
 {
-	stream << object.getName() << " , bureaucrat grade " << object.getGrade() << "." << std::endl;
+	stream << object.getName() << " , bureaucrat grade " << object.getGrade() << "." << RST << std::endl;
 	return stream;
 }

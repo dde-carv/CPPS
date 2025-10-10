@@ -6,23 +6,23 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 11:35:25 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "../inc/Form.hpp"
 
 /************ Constructors and Destructor ************/
 
 Form::Form() : _name("Form"), _gradeToSign(150), _gradeToExec(150), _signed(false)
 {
-	std::cout << GREEN << "Form default constructor called" << std::endl << RST;
+	std::cout << GREEN << "Form default constructor called" << RST << std::endl;
 }
 
 Form::Form(const std::string &name, const int &gradeToSign, const int &gradeToExec)
  : _name(name), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec), _signed(false)
 {
-	std::cout << GREEN << "Form custom constructor called" << std::endl << RST;
+	std::cout << GREEN << "Form custom constructor called" << RST << std::endl;
 
 	try
 	{
@@ -30,19 +30,19 @@ Form::Form(const std::string &name, const int &gradeToSign, const int &gradeToEx
 			throw GradeTooLowException();
 		if (_gradeToSign < 1 || _gradeToExec < 1)
 			throw GradeTooHighException();
-		std::cout << "Form " << _name << " has valid grades, accepted!" << std::endl << RST;
+		std::cout << GREEN << "Form " << _name << " has valid grades, accepted!" << RST << std::endl;
 	}
 	catch(const std::exception& e)
 	{
 		std::cout << RED << "Form constructor exception (" << _name << "): "\
-		 << e.what() << std::endl << RST;
+		 << e.what() << RST << std::endl;
 	}
 }
 
 Form::Form(const Form &other)
  : _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec)
 {
-	std::cout << GREEN << "Form copy constructor called" << std::endl << RST;
+	std::cout << GREEN << "Form copy constructor called" << RST << std::endl;
 
 	*this = other;
 }
@@ -52,14 +52,14 @@ Form &Form::operator=(const Form &other)
 	if (this != &other)
 		_signed = other._signed;
 
-	std::cout << GREEN << "Form copy assignment operator called" << std::endl << RST;
+	std::cout << YELLOW << "Form copy assignment operator called" << RST << std::endl;
 
 	return *this;
 }
 
 Form::~Form()
 {
-	std::cout << GREEN << "Form default destructor called" << std::endl << RST;
+	std::cout << RED << "Form default destructor called" << RST << std::endl;
 }
 
 /************ Getters ************/
@@ -98,11 +98,11 @@ int			Form::beSigned(const Bureaucrat &bur)
 			return SIGNED;
 		}
 		else
-			throw GradeTooLowException();
+			throw Bureaucrat::GradeTooLowException();
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << "beSigned exeption: " << e.what() << std::endl;
+		std::cout << RED << "beSigned exeption: " << e.what() << RST << std::endl;
 		return NOT_SIGNED;
 	}
 }
@@ -124,6 +124,6 @@ const char* Form::GradeTooLowException::what() const throw()
 std::ostream	&operator<<(std::ostream &stream, const Form &object)
 {
 	stream << object.getName() << ", bureaucrat expected grade to sign is " << object.getGradeToSign() \
-	<< " and grade to execute is " << object.getGradeToExec() << "." << std::endl;
+	 << " and grade to execute is " << object.getGradeToExec() << "." << RST << std::endl;
 	return stream;
 }

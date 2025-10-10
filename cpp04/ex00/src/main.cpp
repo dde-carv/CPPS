@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:03:50 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/29 17:03:52 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void testSubject()
 	const Animal *j = new Dog();
 	const Animal *i = new Cat();
 
-	std::cout << std::endl << "j is a: " << j->getType() << std::endl;
-	std::cout << "i is a: " << i->getType() << std::endl;
+	std::cout << RST << std::endl << "j is a: " << j->getType() << RST << std::endl;
+	std::cout << "i is a: " << i->getType() << RST << std::endl;
 
-	std::cout << YELLOW << std::endl << "Making sounds:" << RST << std::endl;
+	std::cout << YELLOW << RST << std::endl << "Making sounds:" << RST << std::endl;
 	std::cout << "Dog says: ";
 	j->makeSound();
 	std::cout << "Cat says: ";
@@ -35,7 +35,7 @@ void testSubject()
 	std::cout << "Generic animal says: ";
 	meta->makeSound();
 
-	std::cout << YELLOW << std::endl << "Clean up" << RST << std::endl;
+	std::cout << YELLOW << RST << std::endl << "Clean up" << RST << std::endl;
 	delete meta;
 	delete j;
 	delete i;
@@ -43,42 +43,42 @@ void testSubject()
 
 void testStackInstances()
 {
-	std::cout << std::endl << GREEN << "-= Stack Test =-" << RST << std::endl;
+	std::cout << RST << std::endl << GREEN << "-= Stack Test =-" << RST << std::endl;
 
 	std::cout << YELLOW << "Creating Stack Animals:" << RST << std::endl;
 	Animal animal;
 	Dog dog;
 	Cat cat;
 
-	std::cout << std::endl << YELLOW << "Types" << RST << std::endl;
-	std::cout << "Animal type: " << animal.getType() << std::endl;
-	std::cout << "Dog type: " << dog.getType() << std::endl;
-	std::cout << "Cat type: " << cat.getType() << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Types" << RST << std::endl;
+	std::cout << "Animal type: " << animal.getType() << RST << std::endl;
+	std::cout << "Dog type: " << dog.getType() << RST << std::endl;
+	std::cout << "Cat type: " << cat.getType() << RST << std::endl;
 
-	std::cout << std::endl << YELLOW << "Making sounds:" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Making sounds:" << RST << std::endl;
 	std::cout << "Animal sound: ";
 	animal.makeSound();
 	std::cout << "Dog sound: ";
 	dog.makeSound();
 	std::cout << "Cat sound: ";
 	cat.makeSound();
-	std::cout << std::endl << YELLOW << "Clean up" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Clean up" << RST << std::endl;
 }
 
 void testCopyConstructorAndAssignment()
 {
-	std::cout << std::endl << GREEN << "-= Test Copy Constructor and Assignment =-" << RST << std::endl;
+	std::cout << RST << std::endl << GREEN << "-= Test Copy Constructor and Assignment =-" << RST << std::endl;
 
 	std::cout << YELLOW << "Creating original dog:" << RST << std::endl;
 	Dog originalDog;
-	std::cout << std::endl << YELLOW << "Copy of dog with copy constructor" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Copy of dog with copy constructor" << RST << std::endl;
 	Dog copiedDog(originalDog);
-	std::cout << std::endl << YELLOW << "Another dog to use with assignment" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Another dog to use with assignment" << RST << std::endl;
 	Dog assignedDog;
-	std::cout << std::endl << YELLOW << "Assigniment of originalDog to assignedDog" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Assigniment of originalDog to assignedDog" << RST << std::endl;
 	assignedDog = originalDog;
 
-	std::cout << std::endl << YELLOW << "all dogs make the same sound" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "all dogs make the same sound" << RST << std::endl;
 	std::cout << "Original dog: ";
 	originalDog.makeSound();
 	std::cout << "Copied dog: ";
@@ -86,13 +86,13 @@ void testCopyConstructorAndAssignment()
 	std::cout << "Assigned dog: ";
 	assignedDog.makeSound();
 
-	std::cout << std::endl << YELLOW << "It' the same with cats, but i don't like them" << RST << std::endl;
-	std::cout << std::endl << YELLOW << "Clean up" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "It' the same with cats, but i don't like them" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Clean up" << RST << std::endl;
 }
 
 void testAnimalArrays()
 {
-	std::cout << std::endl << GREEN << "-= 'member Zombie Hordes? =-" << RST << std::endl;
+	std::cout << RST << std::endl << GREEN << "-= 'member Zombie Hordes? =-" << RST << std::endl;
 
 	const int arraySize = 4;
 	Animal *animalArray[arraySize];
@@ -103,23 +103,23 @@ void testAnimalArrays()
 		if (i < 2)
 		{
 			animalArray[i] = new Dog();
-			std::cout << "Created Dog at position " << i << std::endl;
+			std::cout << "Created Dog at position " << i << RST << std::endl;
 		}
 		else
 		{
 			animalArray[i] = new Cat();
-			std::cout << "Created Cat at position " << i << std::endl;
+			std::cout << "Created Cat at position " << i << RST << std::endl;
 		}
 	}
 
-	std::cout << std::endl << YELLOW << "Making sounds" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Making sounds" << RST << std::endl;
 	for (int i = 0; i < arraySize; i++)
 	{
 		std::cout << "Animal " << i << " (type: " << animalArray[i]->getType() << ") says: ";
 		animalArray[i]->makeSound();
 	}
 
-	std::cout << std::endl << YELLOW << "Clean up array" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Clean up array" << RST << std::endl;
 	for (int i = 0; i < arraySize; i++)
 	{
 		delete animalArray[i];
@@ -128,7 +128,7 @@ void testAnimalArrays()
 
 void testCustomTypeConstructor()
 {
-	std::cout << std::endl << GREEN << "-= Test Constructor with type name=-" << RST << std::endl;
+	std::cout << RST << std::endl << GREEN << "-= Test Constructor with type name=-" << RST << std::endl;
 
 	std::cout << YELLOW << "Create custom type animals" << RST << std::endl;
 
@@ -136,24 +136,24 @@ void testCustomTypeConstructor()
 	Cat sphinx("Sphinx Cat");
 	Animal unknown("Unknown Animal");
 
-	std::cout << std::endl << YELLOW << "Types" << RST << std::endl;
-	std::cout << "Dog type: " << greatDane.getType() << std::endl;
-	std::cout << "Cat type: " << sphinx.getType() << std::endl;
-	std::cout << "Unknown type: " << unknown.getType() << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Types" << RST << std::endl;
+	std::cout << "Dog type: " << greatDane.getType() << RST << std::endl;
+	std::cout << "Cat type: " << sphinx.getType() << RST << std::endl;
+	std::cout << "Unknown type: " << unknown.getType() << RST << std::endl;
 
-	std::cout << std::endl << YELLOW << "Making sounds" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Making sounds" << RST << std::endl;
 	std::cout << "Great Dane: ";
 	greatDane.makeSound();
 	std::cout << "Sphinx Cat: ";
 	sphinx.makeSound();
 	std::cout << "Unknown Animal: ";
 	unknown.makeSound();
-	std::cout << std::endl << YELLOW << "Clean up" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Clean up" << RST << std::endl;
 }
 
 void testWrongAnimal()
 {
-	std::cout << std::endl << GREEN << "-= Testing WrongAnimal Polymorphism =-" << RST << std::endl;
+	std::cout << RST << std::endl << GREEN << "-= Testing WrongAnimal Polymorphism =-" << RST << std::endl;
 
 	std::cout << YELLOW << "Create WrongAnimals" << RST << std::endl;
 	const WrongAnimal *wrongMeta = new WrongAnimal();
@@ -161,12 +161,12 @@ void testWrongAnimal()
 	// WrongCat in the Heap for comparison
 	WrongCat heapWrongCat;
 
-	std::cout << std::endl << YELLOW << "Types" << RST << std::endl;
-	std::cout << "WrongAnimal type: " << wrongMeta->getType() << std::endl;
-	std::cout << "WrongCat (inheritance from WrongAnimal) type: " << wrongCat->getType() << std::endl;
-	std::cout << "Heap WrongCat type: " << heapWrongCat.getType() << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Types" << RST << std::endl;
+	std::cout << "WrongAnimal type: " << wrongMeta->getType() << RST << std::endl;
+	std::cout << "WrongCat (inheritance from WrongAnimal) type: " << wrongCat->getType() << RST << std::endl;
+	std::cout << "Heap WrongCat type: " << heapWrongCat.getType() << RST << std::endl;
 
-	std::cout << std::endl << YELLOW << "Making sounds" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Making sounds" << RST << std::endl;
 
 	// This will call WrongAnimal::makeSound
 	std::cout << "WrongAnimal sound: ";
@@ -181,7 +181,7 @@ void testWrongAnimal()
 	std::cout << "Heap WrongCat sound: ";
 	heapWrongCat.makeSound();
 
-	std::cout << std::endl << YELLOW << "Clean up" << RST << std::endl;
+	std::cout << RST << std::endl << YELLOW << "Clean up" << RST << std::endl;
 	delete wrongMeta;
 	delete wrongCat;
 }
@@ -196,7 +196,7 @@ int main()
 	testCustomTypeConstructor();
 	testWrongAnimal();
 
-	std::cout << std::endl << GREEN << "All tests completed!" << RST << std::endl;
+	std::cout << RST << std::endl << GREEN << "All tests completed!" << RST << std::endl;
 
 	return 0;
 }
