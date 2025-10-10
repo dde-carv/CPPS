@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:03 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/09/30 11:16:03 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 11:36:33 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name)
 	std::cout << GREEN << "Bureaucrat copy constructor called" << std::endl << RST;
 
 	*this = other;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
+{
+	if (this != &other)
+		_grade = other._grade;
+
+	std::cout << GREEN << "Bureaucrat copy assignment operator called" << std::endl << RST;
+
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -108,17 +118,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "the Bureaucrat grade is too low!!";
 }
 
-/************ Operators ************/
-
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
-{
-	if (this != &other)
-		_grade = other._grade;
-
-	std::cout << GREEN << "Bureaucrat copy assignment operator called" << std::endl << RST;
-
-	return *this;
-}
+/************ Other ************/
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object)
 {

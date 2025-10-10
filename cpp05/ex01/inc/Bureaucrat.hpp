@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:21 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/02 08:44:49 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 11:41:09 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ class Bureaucrat
 		const std::string	getName() const;
 		int					getGrade() const;
 
-		void	incrementGrade();
-		void	decrementGrade();
-		void	signForm(Form &form);
+		void				incrementGrade();
+		void				decrementGrade();
+		void				signForm(Form &form);
 
 	class GradeTooHighException : public std::exception
 	{

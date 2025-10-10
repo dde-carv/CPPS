@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:20 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/09 10:29:56 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:56:59 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ AForm::AForm()
 	std::cout << GREEN << "AForm default constructor called" << std::endl << RST;
 }
 
-AForm::AForm(const std::string &name, const std::string &target, const int &gradeToSign, const int &gradeToExec)
+AForm::AForm(const std::string &name, std::string target, const int &gradeToSign, const int &gradeToExec)
  : _name(name), _target(target), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec), _signed(false)
 {
 	std::cout << GREEN << "AForm custom constructor called" << std::endl << RST;
@@ -41,10 +41,24 @@ AForm::AForm(const std::string &name, const std::string &target, const int &grad
 }
 
 AForm::AForm(const AForm &other)
- : _name(other._name), _gradeToSign(other._gradeToSign), \
- _gradeToExec(other._gradeToExec), _signed(other._signed)
+ : _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec)
 {
 	std::cout << GREEN << "AForm copy constructor called" << std::endl << RST;
+
+	*this = other;
+}
+
+AForm &AForm::operator=(const AForm &other)
+{
+	if (this != &other)
+	{
+		_target = other._target;
+		_signed = other._signed;
+	}
+
+	std::cout << YELLOW << "AForm copy assignment operator called" << std::endl << RST;
+
+	return *this;
 }
 
 AForm::~AForm()
@@ -115,17 +129,7 @@ const char* AForm::NotSignedException::what() const throw()
 	return "the form is not signed, do it first before trying to execute it!";
 }
 
-/************ Operators ************/
-
-AForm &AForm::operator=(const AForm &other)
-{
-	if (this != &other)
-		_signed = other._signed;
-
-	std::cout << YELLOW << "AForm copy assignment operator called" << std::endl << RST;
-
-	return *this;
-}
+/************ Other ************/
 
 std::ostream	&operator<<(std::ostream &stream, const AForm &object)
 {

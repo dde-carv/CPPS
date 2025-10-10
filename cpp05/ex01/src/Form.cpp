@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:30 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 12:01:42 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 11:35:25 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,21 @@ Form::Form(const std::string &name, const int &gradeToSign, const int &gradeToEx
 }
 
 Form::Form(const Form &other)
- : _name(other._name), _gradeToSign(other._gradeToSign), \
- _gradeToExec(other._gradeToExec), _signed(other._signed)
+ : _name(other._name), _gradeToSign(other._gradeToSign), _gradeToExec(other._gradeToExec)
 {
 	std::cout << GREEN << "Form copy constructor called" << std::endl << RST;
+
+	*this = other;
+}
+
+Form &Form::operator=(const Form &other)
+{
+	if (this != &other)
+		_signed = other._signed;
+
+	std::cout << GREEN << "Form copy assignment operator called" << std::endl << RST;
+
+	return *this;
 }
 
 Form::~Form()
@@ -108,17 +119,7 @@ const char* Form::GradeTooLowException::what() const throw()
 	return "the Form grade is too low!!";
 }
 
-/************ Operators ************/
-
-Form &Form::operator=(const Form &other)
-{
-	if (this != &other)
-		_signed = other._signed;
-
-	std::cout << GREEN << "Form copy assignment operator called" << std::endl << RST;
-
-	return *this;
-}
+/************ Other ************/
 
 std::ostream	&operator<<(std::ostream &stream, const Form &object)
 {

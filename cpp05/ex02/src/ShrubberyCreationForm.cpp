@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:31 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/09 14:32:45 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:57:49 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /************ Constructors and Destructor ************/
 
 ShrubberyCreationForm::ShrubberyCreationForm()
- : AForm("Default", "Default", 145, 137)
+ : AForm("ShrubberyCreationForm", "Default", 145, 137)
 {
 	std::cout << GREEN << "ShrubberyCreationForm default constructor called." << std::endl << RST;
 }
@@ -27,17 +27,20 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
- : AForm(other._name, other._target, other._gradeToSign, other._gradeToExec)
+ : AForm(other)
 {
 	std::cout << GREEN << "ShrubberyCreationForm copy constructor called." << std::endl << RST;
+
 	*this = other;
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
-	if (this != &other && other.getSigned() == true)
-		_signed = other._signed;
+	if (this != &other)
+		AForm::operator=(other);
+
 	std::cout << YELLOW << "ShrubberyCreationForm copy assignment operator called." << std::endl << RST;
+
 	return *this;
 }
 
@@ -46,7 +49,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << RED << "ShrubberyCreationForm destructor called." << std::endl << RST;
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "The Bureaucrat " << executor.getName() \
 	 << " planted a Shrubbery tree at " << _target << "!" << std::endl << RST;

@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/09 14:12:05 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:58:29 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,20 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target)
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other)
- : AForm(other._name, other._target, other._gradeToSign, other._gradeToExec)
+ : AForm(other)
 {
 	std::cout << GREEN << "PresidentialPardonForm copy constructor called." << std::endl;
+
 	*this = other;
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm &other)
 {
-	if (this != &other && other.getSigned() == true)
-		_signed = other._signed;
+	if (this != &other)
+		AForm::operator=(other);
+
 	std::cout << YELLOW << "PresidentialPardonForm copy assignment operator called." << std::endl;
+
 	return *this;
 }
 
@@ -46,7 +49,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << RED << "PresidentialPardonForm destructor called." << std::endl;
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const &executor)
+void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "* As the sun rises, horns start to sing *" << std::endl << RST;
 	std::cout << BLUE << "* In the mist of the sunrise, the Bureaucrat " << executor.getName() \

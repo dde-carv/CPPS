@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:01 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/09 10:00:25 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:56:50 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,27 +20,26 @@ class AForm
 {
 	protected:
 		const std::string	_name;
-		const std::string	_target;
+		std::string			_target;
 		const int			_gradeToSign;
 		const int			_gradeToExec;
 		bool				_signed;
 
-		AForm();
-		AForm(const std::string &name, const std::string &target, const int &gradeToSign, const int &gradeToExec);
-		AForm(const AForm &other);
-
 	public:
+		AForm();
+		AForm(const std::string &name, std::string target, const int &gradeToSign, const int &gradeToExec);
+		AForm(const AForm &other);
 		AForm	&operator=(const AForm &other);
 		virtual	~AForm() = 0;
 
-		std::string	getName() const;
-		int			getGradeToSign() const;
-		int			getGradeToExec() const;
-		bool		getSigned() const;
+		std::string		getName() const;
+		int				getGradeToSign() const;
+		int				getGradeToExec() const;
+		bool			getSigned() const;
 
-		void		beSigned(const Bureaucrat &bur);
-		void		checkExecute(const Bureaucrat &executor) const;
-		virtual void	execute(const Bureaucrat &executor) = 0;
+		void			beSigned(const Bureaucrat &bur);
+		void			checkExecute(const Bureaucrat &executor) const;
+		virtual void	execute(const Bureaucrat &executor) const = 0;
 
 
 	class GradeTooHighException : public std::exception
@@ -61,4 +60,4 @@ class AForm
 	};
 };
 
-std::ostream	&operator<<(std::ostream &stream, const Form &object);
+std::ostream	&operator<<(std::ostream &stream, const AForm &object);

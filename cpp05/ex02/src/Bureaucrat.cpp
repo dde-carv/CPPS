@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:27 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/09 10:29:40 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 13:49:24 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,16 @@ Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name)
 	std::cout << GREEN << "Bureaucrat copy constructor called" << std::endl << RST;
 
 	*this = other;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
+{
+	if (this != &other)
+		_grade = other._grade;
+
+	std::cout << YELLOW << "Bureaucrat copy assignment operator called" << std::endl << RST;
+
+	return *this;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -91,26 +101,41 @@ void	Bureaucrat::decrementGrade()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << RED << "Grade decrementing exception (" << _name << "): "\
+		std::cout << RED << "Grade decrementing exception (" << _name << "): " \
 		 << e.what() << std::endl << RST;
 	}
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
-	int	sign_status;
-
-	sign_status = form.beSigned(*this);
-	if (sign_status == SIGNED)
-		std::cout << _name << " signed the " << form.getName() << " form." << std::endl;
-	else
+	try
 	{
-		std::cout << _name << " couldn't sign the " << form.getName() << " because ";
-		if (sign_status == NOT_SIGNED)
-			std::cout << _name << " needs at least a grade of " << form.getGradeToSign() \
-			<< " and his grade is " << _grade << "." << std::endl;
-		else
-			std::cout << "the form is already signed." << "." << std::endl;
+		form.beSigned(*this);
+		std::cout << BLUE << "The Bureaucrat " << _name << " signed " \
+		 << form.getName() << "." << std::endl << RST;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << "Exception: the Bureaucrat " << _name \
+		 << " couldn't sign " << form.getName() << " because " \
+		 << e.what() << std::endl << RST;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	try
+	{
+		form.checkExecute(*this);
+		form.execute(*this);
+		std::cout << BLUE << "The Bureaucrat " << _name << " executed " \
+		 << form.getName() << "." << std::endl << RST;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << "Exception: The Bureaucrat " << _name \
+		 << " couldn't execute " << form.getName() << " because " \
+		 << e.what() << std::endl << RST;
 	}
 }
 
@@ -126,17 +151,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 	return "the Bureaucrat grade is too low!!";
 }
 
-/************ Operators ************/
-
-Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
-{
-	if (this != &other)
-		_grade = other._grade;
-
-	std::cout << YELLOW << "Bureaucrat copy assignment operator called" << std::endl << RST;
-
-	return *this;
-}
+/************ Other ************/
 
 std::ostream	&operator<<(std::ostream &stream, const Bureaucrat &object)
 {

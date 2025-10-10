@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/08 10:49:12 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 11:32:57 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class Form
 		int			getGradeToExec() const;
 		bool		getSigned() const;
 
-		int					beSigned(const Bureaucrat &bur);
+		int			beSigned(const Bureaucrat &bur);
 
 	class GradeTooHighException : public std::exception
 	{

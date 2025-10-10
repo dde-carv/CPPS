@@ -132,6 +132,7 @@ $CLASS_NAME::$CLASS_NAME(/* Add parameters here */)
 $CLASS_NAME::$CLASS_NAME(const $CLASS_NAME &other)
 {
 	std::cout << GREEN << "$CLASS_NAME copy constructor called." << RST << std::endl;
+
 	*this = other;
 }
 
@@ -141,7 +142,9 @@ $CLASS_NAME &$CLASS_NAME::operator=(const $CLASS_NAME &other)
 	{
 		// Copy attributes here
 	}
+
 	std::cout << YELLOW << "$CLASS_NAME copy assignment operator called." << RST << std::endl;
+
 	return *this;
 }
 
@@ -149,6 +152,11 @@ $CLASS_NAME::~$CLASS_NAME()
 {
 	std::cout << RED << "$CLASS_NAME destructor called." << RST << std::endl;
 }
+
+/************ Member Functions ************/
+
+	// Add member functions here
+
 EOL
 
   echo "Class $CLASS_NAME created with .hpp and .cpp files."
