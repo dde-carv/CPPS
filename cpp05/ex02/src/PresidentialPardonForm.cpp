@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 13:58:29 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 /************ Constructors and Destructor ************/
 
 PresidentialPardonForm::PresidentialPardonForm()
- : AForm("Default", "Default", 25, 5)
+ : AForm("PresidentialPardonForm", "Default", 25, 5)
 {
-	std::cout << GREEN << "PresidentialPardonForm default constructor called." << std::endl;
+	std::cout << GREEN << "PresidentialPardonForm default constructor called." << RST << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
  : AForm("PresidentialPardonForm", target, 25, 5)
 {
-	std::cout << GREEN << "PresidentialPardonForm custom constructor called." << std::endl;
+	std::cout << GREEN << "PresidentialPardonForm custom constructor called." << RST << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other)
  : AForm(other)
 {
-	std::cout << GREEN << "PresidentialPardonForm copy constructor called." << std::endl;
+	std::cout << GREEN << "PresidentialPardonForm copy constructor called." << RST << std::endl;
 
 	*this = other;
 }
@@ -39,21 +39,21 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	if (this != &other)
 		AForm::operator=(other);
 
-	std::cout << YELLOW << "PresidentialPardonForm copy assignment operator called." << std::endl;
+	std::cout << YELLOW << "PresidentialPardonForm copy assignment operator called." << RST << std::endl;
 
 	return *this;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
 {
-	std::cout << RED << "PresidentialPardonForm destructor called." << std::endl;
+	std::cout << RED << "PresidentialPardonForm destructor called." << RST << std::endl;
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
-	std::cout << BLUE << "* As the sun rises, horns start to sing *" << std::endl << RST;
+	std::cout << BLUE << "* As the sun rises, horns start to sing *" << RST << std::endl;
 	std::cout << BLUE << "* In the mist of the sunrise, the Bureaucrat " << executor.getName() \
-	 << " appears and begins to read a decree *" << std::endl << RST;
+	 << " appears and begins to read a decree *" << RST << std::endl;
 	std::cout << BLUE << "* \"In the name of the great Zaphod Beeblebrox, " << _target \
-	 << " has been pardoned of all their actions!\" *" << std::endl << RST;
+	 << " has been pardoned of all their actions!\" *" << RST << std::endl;
 }

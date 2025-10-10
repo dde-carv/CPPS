@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:28 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 13:58:12 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:42:08 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 /************ Constructors and Destructor ************/
 
 RobotomyRequestForm::RobotomyRequestForm()
- : AForm("Default", "Default", 72, 45)
+ : AForm("RobotomyRequestForm", "Default", 72, 45)
 {
-	std::cout << GREEN << "RobotomyRequestForm default constructor called." << std::endl << RST;
+	std::cout << GREEN << "RobotomyRequestForm default constructor called." << RST << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target)
  : AForm("RobotomyRequestForm", target, 72, 45)
 {
-	std::cout << GREEN << "RobotomyRequestForm custom constructor called." << std::endl << RST;
+	std::cout << GREEN << "RobotomyRequestForm custom constructor called." << RST << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other)
  : AForm(other)
 {
-	std::cout << GREEN << "RobotomyRequestForm copy constructor called." << std::endl << RST;
+	std::cout << GREEN << "RobotomyRequestForm copy constructor called." << RST << std::endl;
 
 	*this = other;
 }
@@ -39,23 +39,23 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	if (this != &other)
 		AForm::operator=(other);
 
-	std::cout << YELLOW << "RobotomyRequestForm copy assignment operator called." << std::endl << RST;
+	std::cout << YELLOW << "RobotomyRequestForm copy assignment operator called." << RST << std::endl;
 
 	return *this;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-	std::cout << RED << "RobotomyRequestForm destructor called." << std::endl << RST;
+	std::cout << RED << "RobotomyRequestForm destructor called." << RST << std::endl;
 }
 
 void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
-	std::cout << BLUE << "* BRZBRZBRZBRZBRZ * - Drilling noises!!" << std::endl << RST;
+	std::cout << BLUE << "* BRZBRZBRZBRZBRZ * - Drilling noises!!" << RST << std::endl;
 	if (std::rand() % 2)
 		std::cout << BLUE << _target << " has been robotomized sucessfully by " \
-		 << executor.getName() << "!" << std::endl << RST;
+		 << executor.getName() << "!" << RST << std::endl;
 	else
 		std::cout << BLUE << _target << " failed the robotomy by " \
-		 << executor.getName() << "!" << std::endl << RST;
+		 << executor.getName() << "!" << RST << std::endl;
 }

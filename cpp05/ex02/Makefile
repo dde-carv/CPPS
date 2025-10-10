@@ -1,4 +1,4 @@
-NAME		= form_pt2
+NAME		=	form_pt2
 
 INC_DIR		=	inc/
 SRC_DIR		=	src/

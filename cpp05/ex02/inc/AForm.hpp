@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:01 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 13:56:50 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:23:32 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ class AForm
 		const int			_gradeToExec;
 		bool				_signed;
 
-	public:
 		AForm();
 		AForm(const std::string &name, std::string target, const int &gradeToSign, const int &gradeToExec);
 		AForm(const AForm &other);
+
+	public:
 		AForm	&operator=(const AForm &other);
 		virtual	~AForm() = 0;
 

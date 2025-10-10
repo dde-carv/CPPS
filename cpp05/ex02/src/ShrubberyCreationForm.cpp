@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:31 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 13:57:49 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/10 16:44:14 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
 ShrubberyCreationForm::ShrubberyCreationForm()
  : AForm("ShrubberyCreationForm", "Default", 145, 137)
 {
-	std::cout << GREEN << "ShrubberyCreationForm default constructor called." << std::endl << RST;
+	std::cout << GREEN << "ShrubberyCreationForm default constructor called." << RST << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
- : AForm("RobotomyRequestForm", target, 145, 137)
+ : AForm("ShrubberyCreationForm", target, 145, 137)
 {
-	std::cout << GREEN << "ShrubberyCreationForm custom constructor called." << std::endl << RST;
+	std::cout << GREEN << "ShrubberyCreationForm custom constructor called." << RST << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
  : AForm(other)
 {
-	std::cout << GREEN << "ShrubberyCreationForm copy constructor called." << std::endl << RST;
+	std::cout << GREEN << "ShrubberyCreationForm copy constructor called." << RST << std::endl;
 
 	*this = other;
 }
@@ -39,24 +39,24 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	if (this != &other)
 		AForm::operator=(other);
 
-	std::cout << YELLOW << "ShrubberyCreationForm copy assignment operator called." << std::endl << RST;
+	std::cout << YELLOW << "ShrubberyCreationForm copy assignment operator called." << RST << std::endl;
 
 	return *this;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << RED << "ShrubberyCreationForm destructor called." << std::endl << RST;
+	std::cout << RED << "ShrubberyCreationForm destructor called." << RST << std::endl;
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "The Bureaucrat " << executor.getName() \
-	 << " planted a Shrubbery tree at " << _target << "!" << std::endl << RST;
+	 << " planted a Shrubbery tree at " << _target << "!" << RST << std::endl;
 	std::string fileName = _target + "_shrubbery";
 	std::ofstream outFile(fileName.c_str(), std::fstream::trunc);
 	if (!outFile.is_open() || outFile.fail())
-		std::cout << RED << "Error opening file " << fileName << " in ShrubberyCreationForm!" << std::endl << RST;
+		std::cout << RED << "Error opening file " << fileName << " in ShrubberyCreationForm!" << RST << std::endl;
 	outFile << std::endl \
 	 << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣦⣤⣤⣄⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" \
 	 << "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠟⡍⢆⡱⠌⢥⠋⡝⣩⢋⠛⡿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n" \
