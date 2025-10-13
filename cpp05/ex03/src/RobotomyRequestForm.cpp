@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:28 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 10:17:56 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:49:11 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ RobotomyRequestForm::~RobotomyRequestForm()
 	std::cout << RED << "RobotomyRequestForm destructor called." << RST << std::endl;
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const &executor) const
+void	RobotomyRequestForm::action(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "* BRZBRZBRZBRZBRZ * - Drilling noises!!" << RST << std::endl;
 	if (std::rand() % 2)

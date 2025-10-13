@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:27 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 10:17:20 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:48:52 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void	Bureaucrat::executeForm(AForm const &form)
 {
 	try
 	{
-		form.checkExecute(*this);
 		form.execute(*this);
 		std::cout << BLUE << "The Bureaucrat " << _name << " executed " \
 		 << form.getName() << "." << RST << std::endl;

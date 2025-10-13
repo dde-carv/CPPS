@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:20 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 10:17:16 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:48:20 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,13 @@ void		AForm::beSigned(const Bureaucrat &bur)
 	_signed = true;
 }
 
-void		AForm::checkExecute(const Bureaucrat &executor) const
+void		AForm::execute(const Bureaucrat &executor) const
 {
 	if (getSigned() == false)
 		throw NotSignedException();
 	if (executor.getGrade() > getGradeToExec())
 		throw Bureaucrat::GradeTooLowException();
+	action(executor);
 }
 
 /************ Execeptions ************/

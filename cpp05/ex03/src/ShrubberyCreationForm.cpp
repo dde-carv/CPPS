@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:31 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 10:17:59 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:49:15 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << RED << "ShrubberyCreationForm destructor called." << RST << std::endl;
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void	ShrubberyCreationForm::action(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "The Bureaucrat " << executor.getName() \
 	 << " planted a Shrubbery tree at " << _target << "!" << RST << std::endl;

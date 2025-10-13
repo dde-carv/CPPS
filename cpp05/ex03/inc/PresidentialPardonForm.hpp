@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:08 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 13:58:33 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:47:10 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm	&operator=(const PresidentialPardonForm &other);
 		~PresidentialPardonForm();
 
-		void	execute(Bureaucrat const &executor) const;
+		void	action(Bureaucrat const &executor) const;
 };

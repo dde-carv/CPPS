@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 10:16:53 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:38:15 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 	std::cout << RED << "PresidentialPardonForm destructor called." << RST << std::endl;
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
+void	PresidentialPardonForm::action(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "* As the sun rises, horns start to sing *" << RST << std::endl;
 	std::cout << BLUE << "* In the mist of the sunrise, the Bureaucrat " << executor.getName() \

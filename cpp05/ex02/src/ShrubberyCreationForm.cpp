@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:31 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 10:16:58 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:40:53 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << RED << "ShrubberyCreationForm destructor called." << RST << std::endl;
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+void	ShrubberyCreationForm::action(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "The Bureaucrat " << executor.getName() \
 	 << " planted a Shrubbery tree at " << _target << "!" << RST << std::endl;
 	std::string fileName = _target + "_shrubbery";
-	std::ofstream outFile(fileName.c_str(), std::fstream::trunc);
+	std::ofstream outFile(fileName.c_str(), std::fstream::app);
 	if (!outFile.is_open() || outFile.fail())
 		std::cout << RED << "Error opening file " << fileName << " in ShrubberyCreationForm!" << RST << std::endl;
 	outFile << std::endl \

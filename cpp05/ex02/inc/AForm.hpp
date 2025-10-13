@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:01 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 16:23:32 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 15:37:12 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ class AForm
 		bool			getSigned() const;
 
 		void			beSigned(const Bureaucrat &bur);
-		void			checkExecute(const Bureaucrat &executor) const;
-		virtual void	execute(const Bureaucrat &executor) const = 0;
+		void			execute(const Bureaucrat &executor) const;
+		virtual void	action(const Bureaucrat &executor) const = 0;
 
 
 	class GradeTooHighException : public std::exception
