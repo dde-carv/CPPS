@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 10:17:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 11:11:39 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/13 14:28:14 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ AForm	*Intern::createForm(const std::string &target, int &formNbr)
 		case 2:
 			return new ShrubberyCreationForm(target);
 	}
-	return NULL;
+	throw InvalidName();
 }
 
 AForm	*Intern::makeForm(const std::string &name, const std::string &target)
