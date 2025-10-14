@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:28 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 15:49:11 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:33:53 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	RobotomyRequestForm::action(Bureaucrat const &executor) const
 {
 	std::cout << BLUE << "* BRZBRZBRZBRZBRZ * - Drilling noises!!" << RST << std::endl;
 	if (std::rand() % 2)
-		std::cout << BLUE << _target << " has been robotomized sucessfully by " \
+		std::cout  << _target << GREEN << " has been robotomized sucessfully by " \
 		 << executor.getName() << "!" << RST << std::endl;
 	else
-		std::cout << BLUE << _target << " failed the robotomy by " \
+		std::cout << _target << RED << " failed the robotomy by " \
 		 << executor.getName() << "!" << RST << std::endl;
 }
