@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:21 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 14:01:49 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:39:45 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
+#include <ctime>
 #include "AForm.hpp"
 
 class AForm;

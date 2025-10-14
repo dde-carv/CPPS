@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:43:41 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/14 11:30:52 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:41:40 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	PresidentialPardonForm_test(Bureaucrat &good, Bureaucrat &bad)
 
 int main()
 {
+		std::srand(static_cast<unsigned int>(std::time(NULL)));
 		Bureaucrat	Alberto("Alberto", 1);
 		Bureaucrat	Ulisses("Ulisses", 150);
 		//AForm RandomForm;
@@ -67,8 +68,8 @@ int main()
 		Alberto.incrementGrade();
 		Ulisses.decrementGrade();
 
-		//ShrubberyCreationForm_test(Alberto, Ulisses);
+		ShrubberyCreationForm_test(Alberto, Ulisses);
 		RobotomyRequestForm_test(Alberto, Ulisses);
-		//PresidentialPardonForm_test(Alberto, Ulisses);
+		PresidentialPardonForm_test(Alberto, Ulisses);
 		return 0;
 }
