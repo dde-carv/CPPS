@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:43:41 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 12:15:33 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:30:52 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,8 @@ int main()
 		Alberto.incrementGrade();
 		Ulisses.decrementGrade();
 
-		ShrubberyCreationForm_test(Alberto, Ulisses);
+		//ShrubberyCreationForm_test(Alberto, Ulisses);
 		RobotomyRequestForm_test(Alberto, Ulisses);
-		PresidentialPardonForm_test(Alberto, Ulisses);
+		//PresidentialPardonForm_test(Alberto, Ulisses);
 		return 0;
 }
