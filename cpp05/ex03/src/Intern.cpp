@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 10:17:24 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 14:28:14 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:31:32 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,6 @@ Intern::~Intern()
 
 /************ Member Functions ************/
 
-AForm	*Intern::createForm(const std::string &target, int &formNbr)
-{
-	switch (formNbr)
-	{
-		case 0:
-			return new PresidentialPardonForm(target);
-		case 1:
-			return new RobotomyRequestForm(target);
-		case 2:
-			return new ShrubberyCreationForm(target);
-	}
-	throw InvalidName();
-}
-
 AForm	*Intern::makeForm(const std::string &name, const std::string &target)
 {
 	std::string formName[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
@@ -64,7 +50,21 @@ AForm	*Intern::makeForm(const std::string &name, const std::string &target)
 	{
 		if (name == formName[i])
 		{
-			AForm *form = createForm(target, i);
+			AForm *form = NULL;
+			switch (i)
+			{
+				case 0:
+					form = new PresidentialPardonForm(target);
+					break;
+				case 1:
+					form = new RobotomyRequestForm(target);
+					break;
+				case 2:
+					form = new ShrubberyCreationForm(target);
+					break;
+				default:
+					throw InvalidName();
+			}
 			std::cout << BLUE << "Intern creates " << name << " form." << RST << std::endl;
 			return form;
 		}

@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:14:43 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 11:14:45 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/14 16:21:29 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ class Intern
 		Intern	&operator=(const Intern &other);
 		~Intern();
 
-		AForm	*createForm(const std::string &target, int &formNbr);
 		AForm	*makeForm(const std::string &name, const std::string &target);
 
 	class InvalidName : public std::exception
