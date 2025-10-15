@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:06 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 15:46:38 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/15 09:18:19 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ void	test2()
 	std::cout << "\n==========| TEST 2 |==========\n\n";
 	Bureaucrat phill("Phill", 42);
 	Bureaucrat bob (phill);
+	Bureaucrat libna = bob;
 
 	std::cout << "\n";
 
-	Bureaucrat libna = bob;
 
 	std::cout << "\n";
 	std::cout << "This is " << phill;

@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 17:07:00 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/10 11:37:26 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/15 09:14:56 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WHITE "\033[0;37m"
 # define RST "\033[0m"
 
-#include <iostream>
+# include <iostream>
 
 class Bureaucrat
 {
