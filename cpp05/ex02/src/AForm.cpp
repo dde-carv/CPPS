@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 10:39:20 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/13 15:36:29 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/15 09:58:41 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ AForm::AForm(const std::string &name, std::string target, const int &gradeToSign
 	}
 	catch(const std::exception& e)
 	{
-		std::cout << RED << "AForm constructor exception (" << _name << "): "\
+		std::cout << RED << "AForm constructor exception (" << _name << "): " \
 		 << e.what() << RST << std::endl;
 	}
 }
@@ -135,6 +135,6 @@ const char* AForm::NotSignedException::what() const throw()
 std::ostream	&operator<<(std::ostream &stream, const AForm &object)
 {
 	stream << object.getName() << ", bureaucrat expected grade to sign is " << object.getGradeToSign() \
-	<< " and grade to execute is " << object.getGradeToExec() << "." << RST << std::endl;
+	 << " and grade to execute is " << object.getGradeToExec() << "." << RST << std::endl;
 	return stream;
 }
