@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/15 14:56:37 by dde-carv          #+#    #+#             */
+/*   Updated: 2025/10/15 17:04:41 by dde-carv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
 
 # define BLACK "\033[0;30m"
@@ -15,14 +27,14 @@
 class ScalarConverter
 {
 	private:
-		// Add private attributes here
+		ScalarConverter();
+		ScalarConverter(const ScalarConverter &other);
 
 	public:
-		ScalarConverter();
-		ScalarConverter(/* Add parameters here */);
-		ScalarConverter(const ScalarConverter &other);
 		ScalarConverter	&operator=(const ScalarConverter &other);
 		~ScalarConverter();
 
-		// Add member functions here
+		static void	convert(const std::string str);
 };
+
+int	findType(const std::string &str);
