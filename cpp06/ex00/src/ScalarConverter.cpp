@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:35 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/16 13:59:35 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/16 17:09:20 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	findType(const std::string &str)
 				return 42;
 			dot = true;
 		}
-		else if (i != 0 && str[i + 1] == 0 && dot && str[i] == 'f')
+		else if (i != 0 && str[i + 1] == '\0' && dot && str[i] == 'f')
 			return 2;
 		else if (str[i] < '0' || str[i] > '9')
 			return 42;
