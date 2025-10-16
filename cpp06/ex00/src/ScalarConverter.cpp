@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:35 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/15 17:25:30 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:59:35 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ScalarConverter::~ScalarConverter()
 
 /************ Member Functions ************/
 
-void	ScalarConverter::convert(const std::string str)
+void	ScalarConverter::convert(std::string str)
 {
 	char	c;
 	int		i;
@@ -83,8 +83,31 @@ void	ScalarConverter::convert(const std::string str)
 			std::cout << RED << "Invalid literal!!" << RST << std::endl;
 			return ;
 	}
-
-
+	if (-2147483649 < d && 2147483648 > d)
+	{
+		std::cout << "char: ";
+		if (c >= 32 && c <= 126)
+			std::cout << "'" << c << "'" << std::endl;
+		else
+			std::cout << "Non displayable" << std::endl;
+		std::cout << "int: " << i << std::endl;
+	}
+	else
+	{
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+	}
+	if (d == static_cast<int>(d))
+	{
+		std::cout << std::fixed;
+		std::cout << "float: " << std::setprecision(1) << f << "f" << std::endl;
+		std::cout << "double: " << d << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << f << "f" << std::endl;
+		std::cout << "double: " << d << std::endl;
+	}
 }
 
 /************ Other ************/
@@ -99,8 +122,27 @@ int	findType(const std::string &str)
 		return 3;
 	if (str[0] == '\'' && str[2] == '\'')
 		return 0;
-	for (int i = 0; str[i] !='\0'; i++)
+	for (int i = 0; str[i] != '\0'; i++)
 	{
-		
+		if (i == 0 && (str[i] == '+' || str[i] == '-'))
+			continue ;
+		else if (str[i] == '.')
+		{
+			if (dot)
+				return 42;
+			dot = true;
+		}
+		else if (i != 0 && str[i + 1] == 0 && dot && str[i] == 'f')
+			return 2;
+		else if (str[i] < '0' || str[i] > '9')
+			return 42;
+	}
+	if (dot)
+		return 3;
+	else
+	{
+		if (atol(str.c_str()) > 2147483647 || atol(str.c_str()) > -2147483648)
+			return 42;
+		return 1;
 	}
 }

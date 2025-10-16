@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:37 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/15 17:04:41 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/16 10:21:56 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define RST "\033[0m"
 
 #include <iostream>
+#include <iomanip>
+#include <string>
+#include <cstdlib>
 
 class ScalarConverter
 {
