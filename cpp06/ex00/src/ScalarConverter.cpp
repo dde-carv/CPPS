@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:35 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/16 17:09:20 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:33:32 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ScalarConverter::~ScalarConverter()
 
 /************ Member Functions ************/
 
-void	ScalarConverter::convert(std::string str)
+void ScalarConverter::convert(std::string str)
 {
 	char	c;
 	int		i;
@@ -80,16 +80,24 @@ void	ScalarConverter::convert(std::string str)
 			break;
 
 		default:
-			std::cout << RED << "Invalid literal!!" << RST << std::endl;
+			std::cout << "Not a valid literal" << std::endl;
 			return ;
 	}
-	if (-2147483649 < d && 2147483648 > d)
+	if (d >= std::numeric_limits<int>::min() &&
+		d <= std::numeric_limits<int>::max())
 	{
-		std::cout << "char: ";
-		if (c >= 32 && c <= 126)
-			std::cout << "'" << c << "'" << std::endl;
+		if (d >= std::numeric_limits<char>::min() &&
+			d <= std::numeric_limits<char>::max())
+		{
+			int iv = static_cast<int>(d);
+			std::cout << "char: ";
+			if (iv >= 32 && iv <= 126)
+				std::cout << "'" << static_cast<char>(iv) << "'" << std::endl;
+			else
+				std::cout << "Non displayable" << std::endl;
+		}
 		else
-			std::cout << "Non displayable" << std::endl;
+			std::cout << "char: impossible" << std::endl;
 		std::cout << "int: " << i << std::endl;
 	}
 	else
@@ -110,39 +118,37 @@ void	ScalarConverter::convert(std::string str)
 	}
 }
 
-/************ Other ************/
-
-int	findType(const std::string &str)
+int findType(const std::string& str)
 {
 	bool	dot = false;
 
 	if (!str.compare("+inff") || !str.compare("-inff") || !str.compare("nanf"))
-		return 2;
+		return (2);
 	else if (!str.compare("+inf") || !str.compare("-inf") || !str.compare("nan"))
-		return 3;
+		return (3);
 	if (str[0] == '\'' && str[2] == '\'')
-		return 0;
+		return (0);
 	for (int i = 0; str[i] != '\0'; i++)
 	{
 		if (i == 0 && (str[i] == '+' || str[i] == '-'))
-			continue ;
+			continue;
 		else if (str[i] == '.')
 		{
 			if (dot)
-				return 42;
+				return (-1);
 			dot = true;
 		}
-		else if (i != 0 && str[i + 1] == '\0' && dot && str[i] == 'f')
-			return 2;
+		else if (i != 0 && str[i + 1] == 0 && dot && str[i] == 'f')
+			return (2);
 		else if (str[i] < '0' || str[i] > '9')
-			return 42;
+			return (-1);
 	}
 	if (dot)
-		return 3;
+		return (3);
 	else
 	{
-		if (atol(str.c_str()) > 2147483647 || atol(str.c_str()) > -2147483648)
-			return 42;
-		return 1;
+		if (atol(str.c_str()) > 2147483647 || atol(str.c_str()) < -2147483648)
+			return (3);
+		return (1);
 	}
 }

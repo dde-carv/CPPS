@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 14:56:37 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/16 10:21:56 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:32:32 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@
 #include <iomanip>
 #include <string>
 #include <cstdlib>
+#include <limits>
+#include <climits>
+#include <float.h>
+#include <cfloat>
 
 class ScalarConverter
 {
