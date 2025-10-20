@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:47:13 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/17 11:49:15 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/20 11:52:24 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,12 @@ Serializer::~Serializer()
 
 /************ Member Functions ************/
 
-	// Add member functions here
+uintptr_t	Serializer::serialize(Data *ptr)
+{
+	return reinterpret_cast<uintptr_t>(ptr);
+}
 
+Data	*Serializer::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data*>(raw);
+}

@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 11:47:07 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/17 11:50:14 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/20 09:49:52 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # define RST "\033[0m"
 
 #include <iostream>
+#include <stdint.h>
+#include "Data.hpp"
 
 class Serializer
 {
@@ -34,5 +36,6 @@ class Serializer
 		Serializer	&operator=(const Serializer &other);
 		~Serializer();
 
-		//uintptr_t	serialize(Data *ptr);
+		static uintptr_t	serialize(Data *ptr);
+		static Data*		deserialize(uintptr_t raw);
 };
