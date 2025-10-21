@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 09:28:32 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/21 10:12:40 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/21 13:42:47 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@
 class Base
 {
 	public:
-		virtual ~Base() = 0;
+		virtual ~Base();
 };
