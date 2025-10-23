@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   iter.hpp                                           :+:      :+:    :+:   */
+/*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 13:48:44 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/23 16:03:09 by dde-carv         ###   ########.fr       */
+/*   Created: 2025/10/23 16:09:31 by dde-carv          #+#    #+#             */
+/*   Updated: 2025/10/23 17:32:02 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,28 @@
 
 #include <iostream>
 
-template <typename A, typename B>
-void	iter(A *arr, const int len, B func)
+template <typename T>
+class Array
 {
-	for (int i = 0; i < len; i++)
-		func(arr[i]);
-}
+	private:
+		T				*_array;
+		unsigned int	_size;
+
+	public:
+		Array();
+		Array(unsigned int n);
+		Array(const Array &other);
+		Array	&operator=(const Array &other);
+		~Array();
+
+		T		&operator[](unsigned int i) const;
+
+		unsigned int	size() const;
+
+	class OutOfBounds: public std::exception
+	{
+		virtual const char* what() const throw();
+	};
+};
+
+#include "Array.tpp"
