@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:09:31 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/23 17:32:02 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/24 09:35:11 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Array
 		Array	&operator=(const Array &other);
 		~Array();
 
-		T		&operator[](unsigned int i) const;
+		const T	&operator[](unsigned int i) const;
 
 		unsigned int	size() const;
 

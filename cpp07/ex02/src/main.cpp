@@ -6,23 +6,11 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 16:02:10 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/23 17:30:49 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/24 09:59:29 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Array.hpp"
-
-template<typename T>
-void print(T const n)
-{
-	std::cout << n;
-}
-
-template<typename T>
-void set42(T const n)
-{
-	n = 42;
-}
 
 int main()
 {
@@ -41,11 +29,23 @@ int main()
 	{
 		std::cout << std::endl << "----- OUT OF BOUNDS TEST -----" << std::endl;
 		std::cout << "floating[2] = " << floating[2] << std::endl;
-		std::cout << "floating[3] = " << floating[3] << std::endl;
-		std::cout << "I shouldn't print this!";
+		std::cout << "floating[16] = " << floating[16] << std::endl;
+		std::cout << "I shouldn't print this!" << std::endl;
 	}
-	catch (std::exception & exception)
+	catch (std::exception &e)
 	{
-		std::cerr << exception.what() << std::endl;
+		std::cerr << e.what() << std::endl;
+	}
+
+	try
+	{
+		std::cout << std::endl << "----- OUT OF BOUNDS TEST -----" << std::endl;
+		std::cout << "character[2] = " << character[2] << std::endl;
+		std::cout << "character[16] = " << character[16] << std::endl;
+		std::cout << "I shouldn't print this!" << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
 	}
 }
