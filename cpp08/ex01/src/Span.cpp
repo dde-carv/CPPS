@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:22:09 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/27 16:46:26 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:18:43 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	Span::addNumber(int nbr)
 
 void	Span::addRandom(int min, int max, unsigned int members)
 {
+	if (min > max)
+		throw MaxLessThanMin();
 	if (_vec.size() == _vec.capacity())
 		throw MaxCapacity();
 	if ((members + _vec.size()) > _vec.capacity())
@@ -108,4 +110,9 @@ const char* Span::LessThanTwo::what() const throw()
 const char* Span::MoreMembersThanCapacity::what() const throw()
 {
 	return "Can't add randomly, there is more numbers to add than capacity!!";
+}
+
+const char* Span::MaxLessThanMin::what() const throw()
+{
+	return "Can't add randomly, the max value can't be less then min value!!";
 }

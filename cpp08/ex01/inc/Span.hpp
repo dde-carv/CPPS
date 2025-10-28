@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:22:52 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/27 16:41:43 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/28 14:16:09 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ class Span
 		virtual const char* what() const throw();
 	};
 	class MoreMembersThanCapacity : public std::exception
+	{
+		virtual const char* what() const throw();
+	};
+	class MaxLessThanMin : public std::exception
 	{
 		virtual const char* what() const throw();
 	};
