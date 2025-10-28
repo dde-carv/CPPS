@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:44:19 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/27 10:39:58 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/28 15:59:12 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main()
 		v.push_back(i);
 	try
 	{
-		std::cout << "find(0): " << *easyfind(v, 0) << std::endl;
+		std::cout << "find(5): " << *easyfind(v, 5) << std::endl;
 		std::cout << "find(404): " << *easyfind(v, 404) << std::endl;
 		std::cout << "Shouldn't print this!\n";
 	}
@@ -56,14 +56,14 @@ int	main()
 	std::list<int> l (myints,myints+5);
 	try
 	{
-		std::cout << "find(65): " << *easyfind(l, 65) << std::endl;
+		std::cout << "find(42): " << *easyfind(l, 42) << std::endl;
 		std::cout << "find(404): " << *easyfind(l, 404) << std::endl;
 		std::cout << "Shouldn't print this!\n";
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
-	std::cout << std::endl;
 	}
+	return 0;
 }
