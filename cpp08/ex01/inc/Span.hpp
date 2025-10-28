@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:22:52 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/28 14:16:09 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:02:44 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Span
 
 	public:
 		Span();
-		Span(unsigned int n);
+		Span(unsigned int N);
 		Span(const Span &other);
 		Span	&operator=(const Span &other);
 		~Span();
@@ -43,14 +43,17 @@ class Span
 	{
 		virtual const char* what() const throw();
 	};
+
 	class LessThanTwo : public std::exception
 	{
 		virtual const char* what() const throw();
 	};
+
 	class MoreMembersThanCapacity : public std::exception
 	{
 		virtual const char* what() const throw();
 	};
+
 	class MaxLessThanMin : public std::exception
 	{
 		virtual const char* what() const throw();

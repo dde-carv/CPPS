@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:22:09 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/28 14:18:43 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:12:55 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	Span::addRandom(int min, int max, unsigned int members)
 		throw MaxCapacity();
 	if ((members + _vec.size()) > _vec.capacity())
 		throw MoreMembersThanCapacity();
-	srand(time(NULL));
 	for (unsigned int i = 0; (i < members) && (_vec.size() != _vec.capacity()); i++)
 		_vec.push_back(min + std::rand() % (max - min + 1));
 }

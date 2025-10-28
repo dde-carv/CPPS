@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:22:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/28 15:35:20 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/28 16:19:59 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int main()
 {
+	srand(time(NULL));
+
 	Span sp = Span(5);
 	try
 	{
@@ -45,6 +47,7 @@ int main()
 	{
 		ps.addNumber(6);
 		ps.addRandom(1, 100000, 999);
+		//sp.addNumber(20);
 	}
 	catch(const std::exception& e)
 	{
