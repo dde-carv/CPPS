@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 11:22:09 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/10/28 16:12:55 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/10/29 10:42:03 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ std::vector<int>	Span::getVec()const
 
 void	Span::addNumber(int nbr)
 {
-	if (_vec.size() == _vec.capacity())
+	if (_vec.size() >= _vec.capacity())
 		throw MaxCapacity();
 	_vec.push_back(nbr);
 }
