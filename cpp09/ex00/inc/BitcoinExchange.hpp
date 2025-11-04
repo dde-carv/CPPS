@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:40 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/03 15:45:36 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/04 14:08:14 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ class BitcoinExchange
 		BitcoinExchange	&operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 
-		void		loadDatabase(const std::string &fileName);
-		void		processDatabase(const std::string &fileName) const;
+		void		loadDataBase(const std::string &fileName);
+		void		processDataBase(const std::string &fileName) const;
 
 	private:
 		bool		validDate(const std::string &date);
