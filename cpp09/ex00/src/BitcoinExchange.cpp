@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/04 15:54:56 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/05 11:58:47 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,6 @@ BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &other)
 
 BitcoinExchange::~BitcoinExchange()
 {}
-
-bool	BitcoinExchange::validDate(const std::string &date)
-{
-	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
-		return false;
-
-	for (std::size_t i = 0; i < date.size(); i++)
-	{
-		if ((i == 4) || (i == 7))
-			continue ;
-		if (!std::isdigit(static_cast<unsigned char>(date[i])))
-			return false;
-	}
-
-	int	year = std::atoi(date.substr(0, 4).c_str());
-	int	month = std::atoi(date.substr(5, 2).c_str());
-	int	day = std::atoi(date.substr(8, 2).c_str());
-
-	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
-		return false;
-
-	return true;
-}
 
 void	BitcoinExchange::loadDataBase(const std::string &fileName)
 {
@@ -77,4 +54,66 @@ void	BitcoinExchange::loadDataBase(const std::string &fileName)
 		_dataBase[dateStr] = rate;
 	}
 	file.close();
+}
+
+void	BitcoinExchange::processInput(const std::string &fileName) const
+{
+	std::ifstream	infile(fileName.c_str());
+	if (!infile.is_open())
+	{
+		std::cout << "Error: Cannot open the input file! \n";
+		return ;
+	}
+
+	std::string	line;
+	if (std::getline(infile, line))
+	{
+		if(line != "date | value")
+		{
+			std::cout << "Error: First line must be 'date | value'! \n";
+			infile.close();
+			return ;
+		}
+	}
+	else
+	{
+		std::cout << "Empty input file! \n";
+		infile.close();
+		return ;
+	}
+
+}
+
+bool		BitcoinExchange::validDate(const std::string &date)
+{
+	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+		return false;
+
+	for (std::size_t i = 0; i < date.size(); i++)
+	{
+		if ((i == 4) || (i == 7))
+			continue ;
+		if (!std::isdigit(static_cast<unsigned char>(date[i])))
+			return false;
+	}
+
+	int	year = std::atoi(date.substr(0, 4).c_str());
+	int	month = std::atoi(date.substr(5, 2).c_str());
+	int	day = std::atoi(date.substr(8, 2).c_str());
+
+	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
+		return false;
+	return true;
+}
+
+std::string	BitcoinExchange::trim(const std::string &str) const
+{
+	std::size_t	start = 0;
+	std::size_t	end = str.size();
+
+	while (start < end && std::isspace(static_cast<unsigned char>(str[start])))
+		start++;
+	while (end > start && std::isspace(static_cast<unsigned char>(str[end - 1])))
+		end--;
+	return str.substr(start, end - start);
 }

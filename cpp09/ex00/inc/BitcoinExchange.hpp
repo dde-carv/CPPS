@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:40 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/04 14:08:14 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/05 11:24:41 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class BitcoinExchange
 		~BitcoinExchange();
 
 		void		loadDataBase(const std::string &fileName);
-		void		processDataBase(const std::string &fileName) const;
+		void		processInput(const std::string &fileName) const;
 
 	private:
 		bool		validDate(const std::string &date);
