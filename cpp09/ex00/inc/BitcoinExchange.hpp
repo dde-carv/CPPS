@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:40 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/05 11:24:41 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/06 10:16:49 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ class BitcoinExchange
 		void		processInput(const std::string &fileName) const;
 
 	private:
-		bool		validDate(const std::string &date);
+		bool		validDate(const std::string &date) const;
 		std::string	trim(const std::string &str) const;
 };

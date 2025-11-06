@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/05 11:58:47 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/06 14:11:44 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,52 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		return ;
 	}
 
+	while (std::getline(infile, line))
+	{
+		if (line.empty())
+			continue ;
+
+		size_t	pipePos = line.find(" | ");
+		if (pipePos == std::string::npos)
+		{
+			std::cout << "Error: There is no pipe symbol in the line: " << line << std::endl;
+			continue ;
+		}
+
+		std::string	date = trim(line.substr(0, pipePos));
+		std::string	value = trim(line.substr(pipePos + 3));
+
+		if (!validDate(date))
+		{
+			std::cout << "Error: bad input => " << date << std::endl;
+			continue ;
+		}
+		if (!value.empty() && value[0] == '-')
+		{
+			if (value != "-0" && value !="-0.0")
+			{
+				std::cout << "Error: Not a positive number. \n";
+				continue ;
+			}
+		}
+
+		int	dotCount = 0;
+		for (std::size_t i = 0; i < value.size(); i++)
+		{
+			if (value[i] == '.')
+				dotCount++;
+		}
+		if (dotCount > 1 || value.empty() || value == ".")
+		{
+			std::cout << "Error: Invalid format => " << value << std::endl;
+			continue ;
+		}
+
+		bool	allGood = true;
+	}
 }
 
-bool		BitcoinExchange::validDate(const std::string &date)
+bool		BitcoinExchange::validDate(const std::string &date) const
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		return false;
