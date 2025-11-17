@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/06 14:11:44 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/17 15:12:16 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	BitcoinExchange::loadDataBase(const std::string &fileName)
 {
 	std::ifstream	file(fileName.c_str());
 	if (!file.is_open())
-			throw std::runtime_error("Error: Cannot open the database file!");
+			throw std::runtime_error("Error: could not open the database file.");
 
 	std::string	line;
 
@@ -42,6 +42,7 @@ void	BitcoinExchange::loadDataBase(const std::string &fileName)
 	{
 		if (line.empty())
 			continue ;
+
 		std::size_t	commaPos = line.find(',');
 
 		std::string	dateStr = line.substr(0, commaPos);
@@ -61,7 +62,7 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 	std::ifstream	infile(fileName.c_str());
 	if (!infile.is_open())
 	{
-		std::cout << "Error: Cannot open the input file! \n";
+		std::cout << "Error: could not open input file.\n";
 		return ;
 	}
 
@@ -70,14 +71,14 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 	{
 		if(line != "date | value")
 		{
-			std::cout << "Error: First line must be 'date | value'! \n";
+			std::cout << "Error: first line must be 'date | value'.\n";
 			infile.close();
 			return ;
 		}
 	}
 	else
 	{
-		std::cout << "Empty input file! \n";
+		std::cout << "Empty input file!\n";
 		infile.close();
 		return ;
 	}
@@ -90,7 +91,7 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		size_t	pipePos = line.find(" | ");
 		if (pipePos == std::string::npos)
 		{
-			std::cout << "Error: There is no pipe symbol in the line: " << line << std::endl;
+			std::cout << "Error: no pipe symbol => " << line << std::endl;
 			continue ;
 		}
 
@@ -106,7 +107,7 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		{
 			if (value != "-0" && value !="-0.0")
 			{
-				std::cout << "Error: Not a positive number. \n";
+				std::cout << "Error: not a positive number.\n";
 				continue ;
 			}
 		}
@@ -119,14 +120,56 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		}
 		if (dotCount > 1 || value.empty() || value == ".")
 		{
-			std::cout << "Error: Invalid format => " << value << std::endl;
+			std::cout << "Error: invalid format => " << value << std::endl;
 			continue ;
 		}
 
 		bool	allGood = true;
+		for (std::size_t	i = 0; i < value.size(); i++)
+		{
+			char	c = value[i];
+			if (c != '-' && c != '.' && !std::isdigit(static_cast<unsigned char>(c)))
+			{
+				allGood = false;
+				break ;
+			}
+		}
+		if (!allGood)
+		{
+			std::cout << "Error: invalid number => " << value << std::endl;
+			continue ;
+		}
+
+		float	valueNbr = std::atof(value.c_str());
+		if (valueNbr > 1000.0f)
+		{
+			std::cout << "Error: too large a number.\n";
+			continue ;
+		}
+
+		std::map<std::string, float>::const_iterator	it = _dataBase.lower_bound(date);
+		if (it == _dataBase.end() || it->first != date)
+		{
+			if (it == _dataBase.begin())
+			{
+				std::cout << "Error: date too early => " << date << std::endl;
+				continue ;
+			}
+			it--;
+		}
+
+		float	rate = it->second;
+		float	result = valueNbr * rate;
+		if (result == 0.0f)
+			result = fabs(result);
+
+		std::cout << date << " => " << value << " = " << result << std::endl;
 	}
+	infile.close();
 }
 
+//! Don't forget to work on this so it can take leap years and correct dates\
+//? (can use a switch case for this)
 bool		BitcoinExchange::validDate(const std::string &date) const
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
