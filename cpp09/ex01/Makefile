@@ -1,4 +1,4 @@
-NAME		=	stack
+NAME		=	RPN
 
 INC_DIR		=	inc/
 SRC_DIR		=	src/
@@ -7,7 +7,8 @@ OBJ_DIR		=	obj/
 CXX			=	c++ -Wall -Werror -Wextra -std=c++98
 RM			=	rm -f
 
-SRCS			=	$(SRC_DIR)main.cpp
+SRCS			=	$(SRC_DIR)main.cpp \
+					$(SRC_DIR)RPN.cpp
 
 OBJS			=	$(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 
