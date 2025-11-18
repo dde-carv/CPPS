@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/17 15:12:16 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/18 10:13:02 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,11 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 	infile.close();
 }
 
-//! Don't forget to work on this so it can take leap years and correct dates\
-//? (can use a switch case for this)
+bool		BitcoinExchange::isLeapYear(const int year) const
+{
+	return (year % 4 == 0) && ((year % 100 != 0) || (year % 400 == 0));
+}
+
 bool		BitcoinExchange::validDate(const std::string &date) const
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
@@ -187,7 +190,13 @@ bool		BitcoinExchange::validDate(const std::string &date) const
 	int	month = std::atoi(date.substr(5, 2).c_str());
 	int	day = std::atoi(date.substr(8, 2).c_str());
 
-	if (year < 0 || month < 1 || month > 12 || day < 1 || day > 31)
+	if (year < 0 || month < 1 || month > 12 || day < 1)
+		return false;
+
+	int	daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (month == 2)
+		daysInMonth[2] = isLeapYear(year) ? 29 : 28;
+	if (day > daysInMonth[month])
 		return false;
 	return true;
 }

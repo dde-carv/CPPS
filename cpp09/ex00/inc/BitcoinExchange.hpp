@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:40 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/17 17:23:26 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/18 08:42:04 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class BitcoinExchange
 		void		processInput(const std::string &fileName) const;
 
 	private:
-		bool		isLeapYear(int year);
+		bool		isLeapYear(const int year) const;
 		bool		validDate(const std::string &date) const;
 		std::string	trim(const std::string &str) const;
 };
