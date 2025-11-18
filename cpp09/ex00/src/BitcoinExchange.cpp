@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/18 10:13:02 by dde-carv         ###   ########.fr       */
+/*   Updated: 2025/11/18 16:46:48 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		size_t	pipePos = line.find(" | ");
 		if (pipePos == std::string::npos)
 		{
-			std::cout << "Error: no pipe symbol => " << line << std::endl;
+			std::cout << "Error: no pipe symbol => " << line << " should be ( | )" << std::endl;
 			continue ;
 		}
 
@@ -105,11 +105,8 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		}
 		if (!value.empty() && value[0] == '-')
 		{
-			if (value != "-0" && value !="-0.0")
-			{
-				std::cout << "Error: not a positive number.\n";
-				continue ;
-			}
+			std::cout << "Error: not a positive number.\n";
+			continue ;
 		}
 
 		int	dotCount = 0;
