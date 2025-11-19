@@ -1,4 +1,4 @@
-NAME		=	stack
+NAME		=	PmergeMe
 
 INC_DIR		=	inc/
 SRC_DIR		=	src/
