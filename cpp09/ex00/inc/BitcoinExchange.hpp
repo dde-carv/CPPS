@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:40 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/18 08:42:04 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:13:37 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ class BitcoinExchange
 {
 	private:
 		std::map<std::string, float>	_dataBase;
+		BitcoinExchange(const BitcoinExchange &other);
+		BitcoinExchange	&operator=(const BitcoinExchange &other);
 
 	public:
 		BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange &other);
-		BitcoinExchange	&operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 
 		void		loadDataBase(const std::string &fileName);

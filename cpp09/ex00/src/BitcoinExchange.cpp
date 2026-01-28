@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/18 16:46:48 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:13:30 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	BitcoinExchange::loadDataBase(const std::string &fileName)
 			throw std::runtime_error("Error: could not open the database file.");
 
 	std::string	line;
-
 	while(std::getline(file, line))
 	{
 		if (line.empty())
@@ -61,26 +60,21 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 {
 	std::ifstream	infile(fileName.c_str());
 	if (!infile.is_open())
-	{
-		std::cout << "Error: could not open input file.\n";
-		return ;
-	}
+		throw std::runtime_error("Error: could not open input file.");
 
 	std::string	line;
 	if (std::getline(infile, line))
 	{
 		if(line != "date | value")
 		{
-			std::cout << "Error: first line must be 'date | value'.\n";
 			infile.close();
-			return ;
+			throw std::runtime_error("Error: first line must be 'date | value'.");
 		}
 	}
 	else
 	{
-		std::cout << "Empty input file!\n";
 		infile.close();
-		return ;
+		throw std::runtime_error("Empty input file!");
 	}
 
 	while (std::getline(infile, line))
