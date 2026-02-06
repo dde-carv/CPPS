@@ -6,7 +6,33 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:34 by dde-carv          #+#    #+#             */
-/*   Updated: 2025/11/19 09:43:35 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/06 18:14:55 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
+#include <vector>
+#include <deque>
+
+#include <algorithm>
+#include <ctime>
+#include <iostream>
+#include <iomanip>
+
+class	PmergeMe
+{
+	public:
+		PmergeMe();
+		~PmergeMe();
+
+		double sortVector(std::vector<int> &vec);
+		double sortDecque(std::deque<int> &deq);
+
+	private:
+		PmergeMe(const PmergeMe &other);
+		PmergeMe &operator=(const PmergeMe &other);
+
+		void	mergeInsertVector(std::vector<int> &vec);
+		void	mergeInsertDeque(std::deque<int> &deq);
+};

@@ -4,10 +4,11 @@ INC_DIR		=	inc/
 SRC_DIR		=	src/
 OBJ_DIR		=	obj/
 
-CXX			=	c++ -Wall -Werror -Wextra -std=c++98
+CXX			=	c++ -Wall -Werror -Wextra -std=c++98 -g
 RM			=	rm -f
 
-SRCS			=	$(SRC_DIR)main.cpp
+SRCS			=	$(SRC_DIR)main.cpp \
+					$(SRC_DIR)PmergeMe.cpp
 
 OBJS			=	$(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 
