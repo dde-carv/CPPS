@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:53 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/06 18:57:27 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/08 22:27:13 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,17 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 PmergeMe::~PmergeMe()
 {}
 
+// Calculates the difference of time between
+// the start and the end of the algorithm
+// and it converts it for microseconds
 static double	deltaInUs(clock_t start, clock_t end)
 {
 	return (double)(end - start) * 1e6 / CLOCKS_PER_SEC;
 }
 
+// Gets the start of execution time and the end
+// of execution time to calculate the difference
+// and calls the algorithm
 double	PmergeMe::sortVector(std::vector<int> &vec)
 {
 	clock_t start = clock();
@@ -42,6 +48,9 @@ double	PmergeMe::sortVector(std::vector<int> &vec)
 	return deltaInUs(start, end);
 }
 
+// Gets the start of execution time and the end
+// of execution time to calculate the difference
+// and calls the algorithm
 double	PmergeMe::sortDecque(std::deque<int> &deq)
 {
 	clock_t start = clock();
@@ -66,6 +75,7 @@ void	PmergeMe::mergeInsertVector(std::vector<int> &vec)
 	int pairs = size / 2;
 	std::vector<int>	firsts;
 	std::vector<int>	seconds;
+	// Reserves space in memory to prevent reallocations
 	firsts.reserve(pairs + (size % 2));
 	seconds.reserve(pairs);
 
