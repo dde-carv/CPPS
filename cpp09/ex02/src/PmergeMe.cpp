@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:53 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/08 22:27:13 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/16 11:59:38 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,35 @@ PmergeMe::~PmergeMe()
 // Calculates the difference of time between
 // the start and the end of the algorithm
 // and it converts it for microseconds
-static double	deltaInUs(clock_t start, clock_t end)
+static double	deltaInUs(timeval tStart, timeval tEnd)
 {
-	return (double)(end - start) * 1e6 / CLOCKS_PER_SEC;
+	return (tEnd.tv_sec - tStart.tv_sec) * 1000.0 + (tEnd.tv_usec - tStart.tv_usec) / 1000.0;
 }
 
 // Gets the start of execution time and the end
 // of execution time to calculate the difference
-// and calls the algorithm
+// and calls the algorithm for the vector
 double	PmergeMe::sortVector(std::vector<int> &vec)
 {
-	clock_t start = clock();
+	struct timeval tStart, tEnd;
+
+	gettimeofday(&tStart, NULL);
 	mergeInsertVector(vec);
-	clock_t end = clock();
-	return deltaInUs(start, end);
+	gettimeofday(&tEnd, NULL);
+	return deltaInUs(tStart, tEnd);
 }
 
 // Gets the start of execution time and the end
 // of execution time to calculate the difference
-// and calls the algorithm
+// and calls the algorithm for the deque
 double	PmergeMe::sortDecque(std::deque<int> &deq)
 {
-	clock_t start = clock();
+	struct timeval tStart, tEnd;
+
+	gettimeofday(&tStart, NULL);
 	mergeInsertDeque(deq);
-	clock_t end = clock();
-	return deltaInUs(start, end);
+	gettimeofday(&tEnd, NULL);
+	return deltaInUs(tStart, tEnd);
 }
 
 void	PmergeMe::mergeInsertVector(std::vector<int> &vec)

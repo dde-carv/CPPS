@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:34 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/06 18:14:55 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/16 11:59:29 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <deque>
 
 #include <algorithm>
-#include <ctime>
+#include <sys/time.h>
 #include <iostream>
 #include <iomanip>
 
