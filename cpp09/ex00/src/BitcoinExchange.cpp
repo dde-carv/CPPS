@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/01/28 10:22:38 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/16 16:07:42 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		for (std::size_t i = 0; i < value.size(); i++)
 		{
 			char	c = value[i];
-			if (c != '-' && c != '.' && !std::isdigit(static_cast<unsigned char>(c)))
+			if (c != '.' && !std::isdigit(static_cast<unsigned char>(c)))
 			{
 				allGood = false;
 				break ;
