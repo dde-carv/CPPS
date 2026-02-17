@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/16 16:07:42 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/17 11:09:55 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	BitcoinExchange::processInput(const std::string &fileName) const
 		size_t	pipePos = line.find(" | ");
 		if (pipePos == std::string::npos)
 		{
-			std::cout << "Error: no pipe symbol => " << line << " should be ( | )" << std::endl;
+			std::cout << "Error: no pipe symbol => " << line << " '( | ) not found'" << std::endl;
 			continue ;
 		}
 
