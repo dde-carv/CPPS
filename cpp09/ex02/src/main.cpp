@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:51 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/16 11:40:26 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/17 14:40:51 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 		std::cout << " " << vec[i];
 	std::cout << std::endl;
 
-	std::cout << std::fixed << std::setprecision(5);
+	std::cout << std::fixed << std::setprecision(3);
 
 	std::cout << "Time to process a range of " << vec.size()
 			<< " elements with std::vector : " << timeToVec << " us\n"
