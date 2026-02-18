@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/18 10:16:18 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/17 11:23:08 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:33:32 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int ac, char **av)
 		int	result = calcuator.eval(av[1]);
 		std::cout << result << std::endl;
 	}
-	catch(const std::exception& e)
+	catch(const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 		return 1;
