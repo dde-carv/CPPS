@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:53 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/18 09:38:22 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/18 14:32:44 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ PmergeMe::~PmergeMe()
 // and it converts it for microseconds
 static double	elapsedInUs(timeval tStart, timeval tEnd)
 {
-	return ((tEnd.tv_sec - tStart.tv_sec) * 1000000.0) + ((tEnd.tv_usec - tStart.tv_usec) / 1000.0);
+	return ((tEnd.tv_sec - tStart.tv_sec) * 1e6) + ((tEnd.tv_usec - tStart.tv_usec) * 1e-6);
 }
 
 // Gets the start of execution time and the end
