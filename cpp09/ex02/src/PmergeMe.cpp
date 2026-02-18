@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:53 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/17 14:43:59 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/18 09:38:22 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ double	PmergeMe::sortVector(std::vector<int> &vec)
 // Gets the start of execution time and the end
 // of execution time to calculate the difference
 // and calls the algorithm for the deque
-double	PmergeMe::sortDecque(std::deque<int> &deq)
+double	PmergeMe::sortDeque(std::deque<int> &deq)
 {
 	struct timeval tStart, tEnd;
 

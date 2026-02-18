@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:51 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/17 14:40:51 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/18 09:38:19 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int ac, char **av)
 
 	PmergeMe	sorter;
 	double		timeToVec = sorter.sortVector(vec);
-	double		timeToDeq = sorter.sortDecque(deq);
+	double		timeToDeq = sorter.sortDeque(deq);
 
 	std::cout << "After:  ";
 	for (size_t i = 0; i < vec.size(); i++)

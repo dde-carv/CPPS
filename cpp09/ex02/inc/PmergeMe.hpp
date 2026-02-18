@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:34 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/17 14:36:49 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/18 09:38:16 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class	PmergeMe
 		~PmergeMe();
 
 		double sortVector(std::vector<int> &vec);
-		double sortDecque(std::deque<int> &deq);
+		double sortDeque(std::deque<int> &deq);
 
 	private:
 		PmergeMe(const PmergeMe &other);
