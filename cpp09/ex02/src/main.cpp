@@ -6,7 +6,7 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:51 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/18 14:33:30 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/02/19 16:50:18 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char **av)
 	for (int i = 1; i < ac; i++)
 	{
 		int num = std::atoi(av[i]);
-		if (num <= 0)
+		if (num <= 0 || std::atol(av[i]) < -2147483648)
 		{
 			std::cerr << "Error\n";
 			return 1;
