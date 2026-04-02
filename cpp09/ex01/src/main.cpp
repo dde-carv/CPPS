@@ -19,11 +19,11 @@ int	main(int ac, char **av)
 		if (ac != 2)
 			throw std::runtime_error("Error: invalid number of arguments!");
 
-		RPN	calcuator;
-		int	result = calcuator.eval(av[1]);
+		RPN	calculator;
+		int	result = calculator.eval(av[1]);
 		std::cout << result << std::endl;
 	}
-	catch(const std::exception &e)
+	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 		return 1;

@@ -13,18 +13,21 @@
 #pragma once
 
 #include <stack>
+#include <string>
 #include <sstream>
 #include <iostream>
+#include <stdexcept>
+#include <climits>
 
 class RPN
 {
 	private:
-		RPN(const RPN &other);
-		RPN	&operator=(const RPN &other);
+		RPN(const RPN &src);
+		RPN	&operator=(const RPN &src);
 
 	public:
 		RPN();
 		~RPN();
 
-		int	eval(const std::string &expression) const;
+		int	eval(const std::string &expr) const;
 };
