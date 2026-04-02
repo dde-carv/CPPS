@@ -15,34 +15,28 @@
 PmergeMe::PmergeMe()
 {}
 
-PmergeMe::PmergeMe(const PmergeMe &other)
+PmergeMe::PmergeMe(const PmergeMe &src)
 {
-	(void)other;
+	(void)src;
 }
 
-PmergeMe &PmergeMe::operator=(const PmergeMe &other)
+PmergeMe	&PmergeMe::operator=(const PmergeMe &src)
 {
-	(void)other;
+	(void)src;
 	return *this;
 }
 
 PmergeMe::~PmergeMe()
 {}
 
-// Calculates the difference of time between
-// the start and the end of the algorithm
-// and it converts it for microseconds
 static double	elapsedInUs(timeval tStart, timeval tEnd)
 {
-	return ((tEnd.tv_sec - tStart.tv_sec) * 1e6) + ((tEnd.tv_usec - tStart.tv_usec) * 1e-6);
+	return ((tEnd.tv_sec - tStart.tv_sec) * 1e6) + (tEnd.tv_usec - tStart.tv_usec);
 }
 
-// Gets the start of execution time and the end
-// of execution time to calculate the difference
-// and calls the algorithm for the vector
 double	PmergeMe::sortVector(std::vector<int> &vec)
 {
-	struct timeval tStart, tEnd;
+	struct timeval	tStart, tEnd;
 
 	gettimeofday(&tStart, NULL);
 	mergeInsertVector(vec);
@@ -50,12 +44,9 @@ double	PmergeMe::sortVector(std::vector<int> &vec)
 	return elapsedInUs(tStart, tEnd);
 }
 
-// Gets the start of execution time and the end
-// of execution time to calculate the difference
-// and calls the algorithm for the deque
 double	PmergeMe::sortDeque(std::deque<int> &deq)
 {
-	struct timeval tStart, tEnd;
+	struct timeval	tStart, tEnd;
 
 	gettimeofday(&tStart, NULL);
 	mergeInsertDeque(deq);
@@ -65,21 +56,21 @@ double	PmergeMe::sortDeque(std::deque<int> &deq)
 
 void	PmergeMe::mergeInsertVector(std::vector<int> &vec)
 {
-	int size = vec.size();
+	int	size = static_cast<int>(vec.size());
 
 	if (size < 2)
 		return ;
 
-	int pairs = size / 2;
+	int				pairs = size / 2;
 	std::vector<int>	firsts;
 	std::vector<int>	seconds;
-	// Reserves space in memory to prevent reallocations
+
 	firsts.reserve(pairs + (size % 2));
 	seconds.reserve(pairs);
 
 	for (int i = 0; i < pairs; i++)
 	{
-		int a = vec[2 * i], b = vec[2 * i + 1];
+		int	a = vec[2 * i], b = vec[2 * i + 1];
 		if (a > b)
 			std::swap(a, b);
 		firsts.push_back(a);
@@ -93,9 +84,8 @@ void	PmergeMe::mergeInsertVector(std::vector<int> &vec)
 
 	for (size_t i = 0; i < seconds.size(); i++)
 	{
-		int value = seconds[i];
-		std::vector<int>::iterator pos = std::lower_bound(firsts.begin(), firsts.end(), value);
-		firsts.insert(pos, value);
+		std::vector<int>::iterator	pos = std::lower_bound(firsts.begin(), firsts.end(), seconds[i]);
+		firsts.insert(pos, seconds[i]);
 	}
 
 	std::copy(firsts.begin(), firsts.end(), vec.begin());
@@ -103,18 +93,18 @@ void	PmergeMe::mergeInsertVector(std::vector<int> &vec)
 
 void	PmergeMe::mergeInsertDeque(std::deque<int> &deq)
 {
-	int size = deq.size();
+	int	size = static_cast<int>(deq.size());
 
 	if (size < 2)
 		return ;
 
-	int pairs = size / 2;
+	int				pairs = size / 2;
 	std::deque<int>	firsts;
 	std::deque<int>	seconds;
 
 	for (int i = 0; i < pairs; i++)
 	{
-		int a = deq[2 * i], b = deq[2 * i + 1];
+		int	a = deq[2 * i], b = deq[2 * i + 1];
 		if (a > b)
 			std::swap(a, b);
 		firsts.push_back(a);
@@ -128,9 +118,8 @@ void	PmergeMe::mergeInsertDeque(std::deque<int> &deq)
 
 	for (size_t i = 0; i < seconds.size(); i++)
 	{
-		int value = seconds[i];
-		std::deque<int>::iterator pos = std::lower_bound(firsts.begin(), firsts.end(), value);
-		firsts.insert(pos, value);
+		std::deque<int>::iterator	pos = std::lower_bound(firsts.begin(), firsts.end(), seconds[i]);
+		firsts.insert(pos, seconds[i]);
 	}
 
 	std::copy(firsts.begin(), firsts.end(), deq.begin());

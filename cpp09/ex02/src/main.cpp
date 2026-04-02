@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: dde-carv <dde-carv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:51 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/19 16:50:18 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/04/02 16:44:55 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,38 @@ int	main(int ac, char **av)
 		return 1;
 	}
 
-	std::vector<int> vec;
-	std::deque<int> deq;
+	std::vector<int>	vec;
+	std::deque<int>		deq;
+
 	for (int i = 1; i < ac; i++)
 	{
-		int num = std::atoi(av[i]);
-		if (num <= 0 || std::atol(av[i]) < -2147483648)
+		std::string	s(av[i]);
+
+		if (s.empty())
 		{
 			std::cerr << "Error\n";
 			return 1;
 		}
-		vec.push_back(num);
-		deq.push_back(num);
+		for (std::size_t j = 0; j < s.size(); j++)
+		{
+			if (!std::isdigit(static_cast<unsigned char>(s[j])))
+			{
+				std::cerr << "Error\n";
+				return 1;
+			}
+		}
+
+		long	num = std::atol(av[i]);
+		if (num <= 0 || num > INT_MAX)
+		{
+			std::cerr << "Error\n";
+			return 1;
+		}
+		vec.push_back(static_cast<int>(num));
+		deq.push_back(static_cast<int>(num));
 	}
 
-	std::cout << "Before: ";
+	std::cout << "Before:";
 	for (size_t i = 0; i < vec.size(); i++)
 		std::cout << " " << vec[i];
 	std::cout << std::endl;
@@ -43,13 +60,12 @@ int	main(int ac, char **av)
 	double		timeToVec = sorter.sortVector(vec);
 	double		timeToDeq = sorter.sortDeque(deq);
 
-	std::cout << "After:  ";
+	std::cout << "After: ";
 	for (size_t i = 0; i < vec.size(); i++)
 		std::cout << " " << vec[i];
 	std::cout << std::endl;
 
 	std::cout << std::fixed << std::setprecision(6);
-
 	std::cout << "Time to process a range of " << vec.size()
 			<< " elements with std::vector : " << timeToVec << " us\n"
 			<< "Time to process a range of " << deq.size()
