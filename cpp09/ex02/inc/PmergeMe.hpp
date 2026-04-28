@@ -3,39 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dde-carv <dde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:34 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/04/02 16:45:10 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:20:26 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <vector>
-#include <deque>
-#include <algorithm>
-#include <iostream>
-#include <iomanip>
-#include <sys/time.h>
-#include <cstdlib>
-#include <climits>
-#include <cctype>
-#include <string>
+# include <vector>
+# include <deque>
+# include <string>
+# include <iostream>
+# include <algorithm>
+# include <sstream>
+# include <stdexcept>
+# include <climits>
+# include <sys/time.h>
+# include <iomanip>
 
 class PmergeMe
 {
-	private:
-		PmergeMe(const PmergeMe &src);
-		PmergeMe	&operator=(const PmergeMe &src);
-
-		void	mergeInsertVector(std::vector<int> &vec);
-		void	mergeInsertDeque(std::deque<int> &deq);
-
 	public:
 		PmergeMe();
+		PmergeMe(const PmergeMe &other);
+		PmergeMe &operator=(const PmergeMe &other);
 		~PmergeMe();
 
-		double	sortVector(std::vector<int> &vec);
-		double	sortDeque(std::deque<int> &deq);
+		void	loadSequence(int ac, char **av);
+		void	run();
+
+	private:
+		std::vector<int>	_vec;
+		std::deque<int>		_deq;
+
+		void	mergeVec(std::vector<int> &seq);
+		void	mergeDeq(std::deque<int> &seq);
+
+		template <typename T>
+		void	printSeq(const std::string &label, const T &seq) const;
+
+		static int				parsePositiveInt(const std::string &s);
+		static std::vector<int>	insertOrder(int n);
 };
+
+template <typename T>
+void	PmergeMe::printSeq(const std::string &label, const T &seq) const
+{
+	std::cout << label << ": ";
+	for (typename T::const_iterator it = seq.begin(); it != seq.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}

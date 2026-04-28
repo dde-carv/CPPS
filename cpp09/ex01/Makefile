@@ -16,12 +16,12 @@ OBJS			=	$(patsubst $(SRC_DIR)%.cpp,$(OBJ_DIR)%.o,$(SRCS))
 all:			$(NAME)
 
 $(NAME):		$(OBJS)
-				@$(CXX) $(OBJS) -o $(NAME)
+				@$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 				@echo "\033[1;32m$(NAME) created.\033[0m"
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.cpp
 				@mkdir -p $(@D)
-				@$(CXX) -I$(INC_DIR) -c $< -o $@
+				@$(CXX) $(CXXFLAGS) -I$(INC_DIR) -c $< -o $@
 
 clean:
 			@$(RM) -r $(OBJ_DIR)

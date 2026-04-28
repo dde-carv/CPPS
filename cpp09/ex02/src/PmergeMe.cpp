@@ -6,121 +6,216 @@
 /*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:53 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/02/18 14:32:44 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/04/28 16:21:33 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PmergeMe.hpp"
 
-PmergeMe::PmergeMe()
-{}
+PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe &src)
-{
-	(void)src;
-}
+PmergeMe::PmergeMe(const PmergeMe &other) : _vec(other._vec), _deq(other._deq) {}
 
-PmergeMe	&PmergeMe::operator=(const PmergeMe &src)
+PmergeMe &PmergeMe::operator=(const PmergeMe &other)
 {
-	(void)src;
+	if (this != &other)
+	{
+		_vec = other._vec;
+		_deq = other._deq;
+	}
 	return *this;
 }
 
-PmergeMe::~PmergeMe()
-{}
+PmergeMe::~PmergeMe() {}
 
-static double	elapsedInUs(timeval tStart, timeval tEnd)
+int	PmergeMe::parsePositiveInt(const std::string &s)
 {
-	return ((tEnd.tv_sec - tStart.tv_sec) * 1e6) + (tEnd.tv_usec - tStart.tv_usec);
-}
-
-double	PmergeMe::sortVector(std::vector<int> &vec)
-{
-	struct timeval	tStart, tEnd;
-
-	gettimeofday(&tStart, NULL);
-	mergeInsertVector(vec);
-	gettimeofday(&tEnd, NULL);
-	return elapsedInUs(tStart, tEnd);
-}
-
-double	PmergeMe::sortDeque(std::deque<int> &deq)
-{
-	struct timeval	tStart, tEnd;
-
-	gettimeofday(&tStart, NULL);
-	mergeInsertDeque(deq);
-	gettimeofday(&tEnd, NULL);
-	return elapsedInUs(tStart, tEnd);
-}
-
-void	PmergeMe::mergeInsertVector(std::vector<int> &vec)
-{
-	int	size = static_cast<int>(vec.size());
-
-	if (size < 2)
-		return ;
-
-	int				pairs = size / 2;
-	std::vector<int>	firsts;
-	std::vector<int>	seconds;
-
-	firsts.reserve(pairs + (size % 2));
-	seconds.reserve(pairs);
-
-	for (int i = 0; i < pairs; i++)
+	if (s.empty())
+		throw std::runtime_error("empty argument");
+	for (size_t i = 0; i < s.size(); i++)
 	{
-		int	a = vec[2 * i], b = vec[2 * i + 1];
-		if (a > b)
+		if (!std::isdigit(s[i]))
+			throw std::runtime_error("invalid argument: " + s);
+	}
+	long val = std::atol(s.c_str());
+	if (val <= 0 || val > INT_MAX)
+		throw std::runtime_error("argument out of range: " + s);
+	return static_cast<int>(val);
+}
+
+void	PmergeMe::loadSequence(int ac, char **av)
+{
+	if (ac < 2)
+		throw std::runtime_error("no arguments provided");
+	for (int i = 1; i < ac; i++)
+	{
+		int val = parsePositiveInt(std::string(av[i]));
+		_vec.push_back(val);
+		_deq.push_back(val);
+	}
+}
+
+std::vector<int>	PmergeMe::insertOrder(int n)
+{
+	std::vector<int>	order;
+	if (n == 0)
+		return order;
+
+	order.push_back(0);
+
+	int	prev = 1;
+	int	curr = 3;
+	while (prev < n)
+	{
+		int	hi = (curr < n) ? curr : n;
+		for (int i = hi; i > prev; i--)
+			order.push_back(i - 1);
+		int	next = curr + 2 * prev;
+		prev = curr;
+		curr = next;
+	}
+
+	std::vector<bool>	done(n, false);
+	for (int i = 0; i < (int)order.size(); i++)
+		if (order[i] < n)
+			done[order[i]] = true;
+	for (int i = 0; i < n; i++)
+		if (!done[i])
+			order.push_back(i);
+
+	return order;
+}
+
+void	PmergeMe::mergeVec(std::vector<int> &seq)
+{
+	int	n = (int)seq.size();
+	if (n <= 1)
+		return;
+
+	bool	odd = (n % 2 == 1);
+	int		straggler = odd ? seq.back() : 0;
+	int		m = n / 2;
+
+	typedef std::pair<int, int>		Pair;
+	std::vector<Pair>				pairs;
+	for (int i = 0; i < m; i++)
+	{
+		int	a = seq[2 * i];
+		int	b = seq[2 * i + 1];
+		if (a < b)
 			std::swap(a, b);
-		firsts.push_back(a);
-		seconds.push_back(b);
+		pairs.push_back(Pair(a, b));
 	}
 
-	if (size % 2 == 1)
-		firsts.push_back(vec[size - 1]);
+	std::vector<int>	main;
+	for (int i = 0; i < m; i++)
+		main.push_back(pairs[i].first);
 
-	mergeInsertVector(firsts);
+	mergeVec(main);
 
-	for (size_t i = 0; i < seconds.size(); i++)
+	std::sort(pairs.begin(), pairs.end());
+
+	std::vector<int>	pend;
+	for (int i = 0; i < m; i++)
+		pend.push_back(pairs[i].second);
+
+	std::vector<int>			result(main);
+	std::vector<int>			ord = insertOrder(m);
+	for (int k = 0; k < (int)ord.size(); k++)
 	{
-		std::vector<int>::iterator	pos = std::lower_bound(firsts.begin(), firsts.end(), seconds[i]);
-		firsts.insert(pos, seconds[i]);
+		int	idx = ord[k];
+		int	val = pend[idx];
+		std::vector<int>::iterator	bnd = std::upper_bound(result.begin(), result.end(), pairs[idx].first);
+		std::vector<int>::iterator	pos = std::lower_bound(result.begin(), bnd, val);
+		result.insert(pos, val);
 	}
 
-	std::copy(firsts.begin(), firsts.end(), vec.begin());
+	if (odd)
+	{
+		std::vector<int>::iterator	pos = std::lower_bound(result.begin(), result.end(), straggler);
+		result.insert(pos, straggler);
+	}
+
+	seq = result;
 }
 
-void	PmergeMe::mergeInsertDeque(std::deque<int> &deq)
+void	PmergeMe::mergeDeq(std::deque<int> &seq)
 {
-	int	size = static_cast<int>(deq.size());
+	int	n = (int)seq.size();
+	if (n <= 1)
+		return;
 
-	if (size < 2)
-		return ;
+	bool	odd = (n % 2 == 1);
+	int		straggler = odd ? seq.back() : 0;
+	int		m = n / 2;
 
-	int				pairs = size / 2;
-	std::deque<int>	firsts;
-	std::deque<int>	seconds;
-
-	for (int i = 0; i < pairs; i++)
+	typedef std::pair<int, int>		Pair;
+	std::vector<Pair>				pairs;
+	for (int i = 0; i < m; i++)
 	{
-		int	a = deq[2 * i], b = deq[2 * i + 1];
-		if (a > b)
+		int	a = seq[2 * i];
+		int	b = seq[2 * i + 1];
+		if (a < b)
 			std::swap(a, b);
-		firsts.push_back(a);
-		seconds.push_back(b);
+		pairs.push_back(Pair(a, b));
 	}
 
-	if (size % 2 == 1)
-		firsts.push_back(deq[size - 1]);
+	std::deque<int>	main;
+	for (int i = 0; i < m; i++)
+		main.push_back(pairs[i].first);
 
-	mergeInsertDeque(firsts);
+	mergeDeq(main);
 
-	for (size_t i = 0; i < seconds.size(); i++)
+	std::sort(pairs.begin(), pairs.end());
+
+	std::vector<int>	pend;
+	for (int i = 0; i < m; i++)
+		pend.push_back(pairs[i].second);
+
+	std::deque<int>				result(main);
+	std::vector<int>			ord = insertOrder(m);
+	for (int k = 0; k < (int)ord.size(); k++)
 	{
-		std::deque<int>::iterator	pos = std::lower_bound(firsts.begin(), firsts.end(), seconds[i]);
-		firsts.insert(pos, seconds[i]);
+		int	idx = ord[k];
+		int	val = pend[idx];
+		std::deque<int>::iterator	bnd = std::upper_bound(result.begin(), result.end(), pairs[idx].first);
+		std::deque<int>::iterator	pos = std::lower_bound(result.begin(), bnd, val);
+		result.insert(pos, val);
 	}
 
-	std::copy(firsts.begin(), firsts.end(), deq.begin());
+	if (odd)
+	{
+		std::deque<int>::iterator	pos = std::lower_bound(result.begin(), result.end(), straggler);
+		result.insert(pos, straggler);
+	}
+
+	seq = result;
+}
+
+void	PmergeMe::run()
+{
+	printSeq("Before", _vec);
+
+	struct timeval	start, end;
+
+	gettimeofday(&start, NULL);
+	mergeVec(_vec);
+	gettimeofday(&end, NULL);
+	double	vecTime = (end.tv_sec - start.tv_sec) * 1e6
+		+ (end.tv_usec - start.tv_usec);
+
+	gettimeofday(&start, NULL);
+	mergeDeq(_deq);
+	gettimeofday(&end, NULL);
+	double	deqTime = (end.tv_sec - start.tv_sec) * 1e6
+		+ (end.tv_usec - start.tv_usec);
+
+	printSeq("After", _vec);
+
+	std::cout << "Time to process a range of " << _vec.size()
+		<< " elements with std::vector : "
+		<< std::fixed << std::setprecision(5) << vecTime << " us" << std::endl;
+	std::cout << "Time to process a range of " << _deq.size()
+		<< " elements with std::deque  : "
+		<< std::fixed << std::setprecision(5) << deqTime << " us" << std::endl;
 }
