@@ -3,42 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dde-carv <dde-carv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:40 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/04/02 14:47:01 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/04/28 09:40:53 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <map>
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <stdexcept>
-#include <cstdlib>
-#include <cctype>
-#include <cmath>
+# include <map>
+# include <string>
+# include <fstream>
+# include <sstream>
+# include <iostream>
+# include <cstdlib>
+# include <stdexcept>
 
 class BitcoinExchange
 {
-	private:
-		std::map<std::string, float>	_db;
-
-		BitcoinExchange(const BitcoinExchange &src);
-		BitcoinExchange	&operator=(const BitcoinExchange &src);
-
-		bool		isLeapYear(int year) const;
-		bool		validDate(const std::string &date) const;
-		bool		validValue(const std::string &val, float &out) const;
-		std::string	trim(const std::string &s) const;
-
 	public:
 		BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange &other);
+		BitcoinExchange &operator=(const BitcoinExchange &other);
 		~BitcoinExchange();
 
-		void	loadDataBase(const std::string &fileName);
-		void	processInput(const std::string &fileName) const;
+		void	importRates(const std::string &csvFile);
+		void	evaluateFile(const std::string &inputFile) const;
+
+	private:
+		std::map<std::string, double>	_db;
+
+		bool	checkDate(const std::string &date) const;
+		bool	parseAmount(const std::string &raw, double &result) const;
+		double	findRate(const std::string &date) const;
 };
