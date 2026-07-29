@@ -50,6 +50,27 @@ bool	BitcoinExchange::parseAmount(const std::string &raw, double &result) const
 	return true;
 }
 
+bool	BitcoinExchange::isLeapYear(int year) const
+{
+	if (year % 400 == 0)
+		return true;
+	if (year % 100 == 0)
+		return false;
+	return year % 4 == 0;
+}
+
+int	BitcoinExchange::daysInMonth(int year, int month) const
+{
+	static const int	days[] = {
+		31, 28, 31, 30, 31, 30,
+		31, 31, 30, 31, 30, 31
+	};
+
+	if (month == 2 && isLeapYear(year))
+		return 29;
+	return days[month - 1];
+}
+
 bool	BitcoinExchange::checkDate(const std::string &date) const
 {
 	if (date.size() != 10)
@@ -63,11 +84,12 @@ bool	BitcoinExchange::checkDate(const std::string &date) const
 		if (date[i] < '0' || date[i] > '9')
 			return false;
 	}
+	int	year = std::atoi(date.substr(0, 4).c_str());
 	int	month = std::atoi(date.substr(5, 2).c_str());
-	int	day   = std::atoi(date.substr(8, 2).c_str());
+	int	day = std::atoi(date.substr(8, 2).c_str());
 	if (month < 1 || month > 12)
 		return false;
-	if (day < 1 || day > 31)
+	if (day < 1 || day > daysInMonth(year, month))
 		return false;
 	return true;
 }

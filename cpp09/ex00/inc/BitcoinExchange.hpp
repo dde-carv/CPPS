@@ -34,6 +34,8 @@ class BitcoinExchange
 	private:
 		std::map<std::string, double>	_db;
 
+		bool	isLeapYear(int year) const;
+		int		daysInMonth(int year, int month) const;
 		bool	checkDate(const std::string &date) const;
 		bool	parseAmount(const std::string &raw, double &result) const;
 		double	findRate(const std::string &date) const;
