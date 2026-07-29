@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duarteeusebio <dde-carv@student.42lisbo    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/19 09:43:34 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/04/28 16:20:26 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/07/29 14:08:29 by duarteeuseb      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <climits>
 # include <sys/time.h>
 # include <iomanip>
+# include <cctype>
+# include <cstdlib>
 
 class PmergeMe
 {
