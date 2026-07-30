@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: duarteeusebio <dde-carv@student.42lisbo    +#+  +:+       +#+        */
+/*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/07/30 09:38:27 by duarteeuseb      ###   ########.fr       */
+/*   Updated: 2026/07/30 11:26:12 by dde-carv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,19 +145,19 @@ void	BitcoinExchange::evaluateFile(const std::string &inputFile) const
 	while (std::getline(file, line))
 	{
 		if (line.empty())
-			continue;
+			continue ;
 
 		std::size_t	sep = line.find('|');
 		if (sep == std::string::npos)
 		{
 			std::cerr << "Error: bad input => " << line << std::endl;
-			continue;
+			continue ;
 		}
 
 		if (line.find('|', sep + 1) != std::string::npos)
 		{
 			std::cerr << "Error: bad input => " << line << std::endl;
-			continue;
+			continue ;
 		}
 
 		std::string	date = trim(line.substr(0, sep));
@@ -166,24 +166,24 @@ void	BitcoinExchange::evaluateFile(const std::string &inputFile) const
 		if (!checkDate(date))
 		{
 			std::cerr << "Error: bad input => " << line << std::endl;
-			continue;
+			continue ;
 		}
 
 		double	amount;
 		if (!parseAmount(amtStr, amount))
 		{
 			std::cerr << "Error: bad input => " << line << std::endl;
-			continue;
+			continue ;
 		}
 		if (amount < 0)
 		{
 			std::cerr << "Error: not a positive number." << std::endl;
-			continue;
+			continue ;
 		}
 		if (amount > 1000)
 		{
 			std::cerr << "Error: too large a number." << std::endl;
-			continue;
+			continue ;
 		}
 
 		try
@@ -206,7 +206,7 @@ void	BitcoinExchange::importRates(const std::string &csvFile)
 
 	std::string	line;
 	if (!std::getline(file, line) || trim(line) != "date,exchange_rate")
-		throw std::runtime_error("invalid database header");
+		throw std::runtime_error("invalid database header.");
 	while (std::getline(file, line))
 	{
 		if (line.empty())
