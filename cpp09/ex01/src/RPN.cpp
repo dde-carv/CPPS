@@ -56,9 +56,11 @@ int	RPN::resolve(const std::string &expr)
 	std::istringstream	stream(expr);
 	std::string			token;
 
+	while (!_operands.empty())
+		_operands.pop();
 	while (stream >> token)
 	{
-		if (token.size() == 1 && std::isdigit(token[0]))
+		if (token.size() == 1 && std::isdigit(static_cast<unsigned char>(token[0])))
 			_operands.push(token[0] - '0');
 		else if (token.size() == 1 && isOperator(token[0]))
 		{

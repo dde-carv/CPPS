@@ -19,6 +19,8 @@
 # include <iostream>
 # include <cstdlib>
 # include <stdexcept>
+# include <cerrno>
+# include <cctype>
 
 class BitcoinExchange
 {

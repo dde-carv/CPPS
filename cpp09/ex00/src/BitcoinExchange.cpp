@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dde-carv <dde-carv@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: duarteeusebio <dde-carv@student.42lisbo    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 10:07:42 by dde-carv          #+#    #+#             */
-/*   Updated: 2026/04/28 15:19:06 by dde-carv         ###   ########.fr       */
+/*   Updated: 2026/07/30 09:38:27 by duarteeuseb      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 BitcoinExchange::~BitcoinExchange()
 {}
 
+static std::string	trim(const std::string &s)
+{
+	std::size_t	first = 0;
+	std::size_t	last = s.size();
+
+	while (first < last && std::isspace(static_cast<unsigned char>(s[first])))
+		first++;
+	while (last > first && std::isspace(static_cast<unsigned char>(s[last - 1])))
+		last--;
+	return s.substr(first, last - first);
+}
+
 double	BitcoinExchange::findRate(const std::string &date) const
 {
 	std::map<std::string, double>::const_iterator	it = _db.upper_bound(date);
@@ -41,9 +53,35 @@ bool	BitcoinExchange::parseAmount(const std::string &raw, double &result) const
 {
 	if (raw.empty())
 		return false;
+
+	bool	hasDigit = false;
+	bool	hasDot = false;
+	std::size_t	i = 0;
+
+	if (raw[i] == '-')
+		i++;
+	if (i == raw.size())
+		return false;
+	for (; i < raw.size(); i++)
+	{
+		if (raw[i] == '.')
+		{
+			if (hasDot)
+				return false;
+			hasDot = true;
+		}
+		else if (std::isdigit(static_cast<unsigned char>(raw[i])))
+			hasDigit = true;
+		else
+			return false;
+	}
+	if (!hasDigit)
+		return false;
+
 	char	*end;
+	errno = 0;
 	result = std::strtod(raw.c_str(), &end);
-	if (*end != '\0')
+	if (*end != '\0' || errno == ERANGE)
 		return false;
 	if (result != result)
 		return false;
@@ -101,7 +139,9 @@ void	BitcoinExchange::evaluateFile(const std::string &inputFile) const
 		throw std::runtime_error("could not open input file: " + inputFile);
 
 	std::string	line;
-	std::getline(file, line);
+	if (std::getline(file, line) && trim(line) != "date | value")
+		throw std::runtime_error("Invalid header: \"" + line + "\" (expected: 'date | value')");
+
 	while (std::getline(file, line))
 	{
 		if (line.empty())
@@ -114,17 +154,14 @@ void	BitcoinExchange::evaluateFile(const std::string &inputFile) const
 			continue;
 		}
 
-		std::string	date = line.substr(0, sep);
-		std::string	amtStr = line.substr(sep + 1);
+		if (line.find('|', sep + 1) != std::string::npos)
+		{
+			std::cerr << "Error: bad input => " << line << std::endl;
+			continue;
+		}
 
-		while (!date.empty() && date[0] == ' ')
-			date.erase(0, 1);
-		while (!date.empty() && date[date.size() - 1] == ' ')
-			date.erase(date.size() - 1);
-		while (!amtStr.empty() && amtStr[0] == ' ')
-			amtStr.erase(0, 1);
-		while (!amtStr.empty() && amtStr[amtStr.size() - 1] == ' ')
-			amtStr.erase(amtStr.size() - 1);
+		std::string	date = trim(line.substr(0, sep));
+		std::string	amtStr = trim(line.substr(sep + 1));
 
 		if (!checkDate(date))
 		{
@@ -168,7 +205,8 @@ void	BitcoinExchange::importRates(const std::string &csvFile)
 		throw std::runtime_error("could not open database: " + csvFile);
 
 	std::string	line;
-	std::getline(file, line);
+	if (!std::getline(file, line) || trim(line) != "date,exchange_rate")
+		throw std::runtime_error("invalid database header");
 	while (std::getline(file, line))
 	{
 		if (line.empty())
@@ -176,8 +214,12 @@ void	BitcoinExchange::importRates(const std::string &csvFile)
 		std::size_t	sep = line.find(',');
 		if (sep == std::string::npos)
 			continue ;
-		std::string	date = line.substr(0, sep);
-		std::string	priceStr = line.substr(sep + 1);
+		if (line.find(',', sep + 1) != std::string::npos)
+			continue ;
+		std::string	date = trim(line.substr(0, sep));
+		std::string	priceStr = trim(line.substr(sep + 1));
+		if (!checkDate(date) || priceStr.empty())
+			continue ;
 		double		price = std::atof(priceStr.c_str());
 		_db[date] = price;
 	}
