@@ -141,6 +141,8 @@ void	BitcoinExchange::evaluateFile(const std::string &inputFile) const
 	std::string	line;
 	if (std::getline(file, line) && trim(line) != "date | value")
 		throw std::runtime_error("Invalid header: \"" + line + "\" (expected: 'date | value')");
+	if (line.empty())
+		throw std::runtime_error("Empty input file : " + inputFile);
 
 	while (std::getline(file, line))
 	{
